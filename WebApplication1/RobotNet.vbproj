@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{DC4F1358-35E7-400C-BFD4-45819E97379D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>RobotNet</RootNamespace>
+    <AssemblyName>RobotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <PublishDatabases>false</PublishDatabases>
+    <DebugSymbols>true</DebugSymbols>
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>Off</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>C:\inetpub\wwwroot\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <Optimize>false</Optimize>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PublishDatabases>false</PublishDatabases>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <RegisterForComInterop>true</RegisterForComInterop>
+    <PublishDatabases>false</PublishDatabases>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Rel|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Rel|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Rel\</OutputPath>
+    <DocumentationFile>RobotNet.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Apollo.Provider">
+      <HintPath>..\..\Apollo.Provider.DLL</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Wijmo.Controls.4, Version=4.0.20131.101, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\ComponentOne\Studio for ASP.NET Wijmo\bin\v4\C1.Web.Wijmo.Controls.4.dll</HintPath>
+    </Reference>
+    <Reference Include="C1.Web.Wijmo.Extenders.4, Version=4.0.20131.101, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\C1.Web.Wijmo.Extenders.4.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop">
+      <HintPath>..\..\CrystalDecisions.Data.AdoDotNetInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_64\CrystalDecisions.ReportAppServer.Controllers\13.0.2000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\assembly\GAC_MSIL\CrystalDecisions.ReportAppServer.DataSetConversion\13.0.2000.0__692fbea5521e1304\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EO.Web">
+      <HintPath>..\..\EO.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MVXSOCKX_SVRLib">
+      <HintPath>..\..\Interop.MVXSOCKX_SVRLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.Compatibility">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="c4dll.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Clientes.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EncomendasDetail.aspx" />
+    <Content Include="EncomendasPrint.aspx" />
+    <Content Include="EncomendasStats.aspx" />
+    <Content Include="Imagens\2.jpg" />
+    <Content Include="Imagens\3.jpg" />
+    <Content Include="Imagens\4.jpg" />
+    <Content Include="Imagens\ajax-loader.gif" />
+    <Content Include="Imagens\portugal_flag.gif" />
+    <Content Include="Imagens\spain_flag.gif" />
+    <Content Include="Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="ClientesDetail.aspx" />
+    <Content Include="ClientesPrint.aspx" />
+    <Content Include="ClientesStats.aspx" />
+    <Content Include="Imagens\Check.png" />
+    <Content Include="Imagens\LogoMiguelez.jpg" />
+    <Content Include="Imagens\under_construction.png" />
+    <Content Include="Logo.jpg" />
+    <Content Include="Orcam.aspx" />
+    <Content Include="OrcamPrint.aspx" />
+    <Content Include="OrcamStats.aspx" />
+    <Content Include="Produtos.aspx" />
+    <Content Include="ProdutosBob.aspx" />
+    <Content Include="ProdutosDetail.aspx" />
+    <Content Include="ProdutosImprimeStocks.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Styles\StyleModalCallOut.css" />
+    <Content Include="Testes.aspx" />
+    <Content Include="Vendas.aspx" />
+    <Content Include="VendasDetail.aspx" />
+    <Content Include="VendasStats.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Encomendas.aspx" />
+    <Content Include="VendasListaDocumentos.aspx" />
+    <Content Include="VendasPrintDoc.aspx" />
+    <Content Include="OrcamDetail.aspx" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.WebData.dll" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.xml" />
+    <None Include="_bin_deployableAssemblies\WebMatrix.Data.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Administration.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.xml" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\NuGet.Core.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.xml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.designer.vb">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About.aspx.vb">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.vb">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.vb">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.vb">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.vb">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Class1.vb" />
+    <Compile Include="Clientes.aspx.designer.vb">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Clientes.aspx.vb">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CodeBase.vb" />
+    <Compile Include="CrystalReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="CR_PCFCLI1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CR_PCFCLI1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="EncomendasDetail.aspx.designer.vb">
+      <DependentUpon>EncomendasDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncomendasDetail.aspx.vb">
+      <DependentUpon>EncomendasDetail.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="EncomendasPrint.aspx.designer.vb">
+      <DependentUpon>EncomendasPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncomendasPrint.aspx.vb">
+      <DependentUpon>EncomendasPrint.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="EncomendasStats.aspx.designer.vb">
+      <DependentUpon>EncomendasStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncomendasStats.aspx.vb">
+      <DependentUpon>EncomendasStats.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="HowTo.vb" />
+    <Compile Include="Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.vb">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ClientesDetail.aspx.designer.vb">
+      <DependentUpon>ClientesDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientesDetail.aspx.vb">
+      <DependentUpon>ClientesDetail.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ClientesPrint.aspx.designer.vb">
+      <DependentUpon>ClientesPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientesPrint.aspx.vb">
+      <DependentUpon>ClientesPrint.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ClientesStats.aspx.designer.vb">
+      <DependentUpon>ClientesStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientesStats.aspx.vb">
+      <DependentUpon>ClientesStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Lasernet.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Orcam.aspx.designer.vb">
+      <DependentUpon>Orcam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Orcam.aspx.vb">
+      <DependentUpon>Orcam.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="OrcamPrint.aspx.designer.vb">
+      <DependentUpon>OrcamPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamPrint.aspx.vb">
+      <DependentUpon>OrcamPrint.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="OrcamStats.aspx.designer.vb">
+      <DependentUpon>OrcamStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamStats.aspx.vb">
+      <DependentUpon>OrcamStats.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Produtos.aspx.designer.vb">
+      <DependentUpon>Produtos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos.aspx.vb">
+      <DependentUpon>Produtos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ProdutosBob.aspx.designer.vb">
+      <DependentUpon>ProdutosBob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutosBob.aspx.vb">
+      <DependentUpon>ProdutosBob.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ProdutosDetail.aspx.designer.vb">
+      <DependentUpon>ProdutosDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutosDetail.aspx.vb">
+      <DependentUpon>ProdutosDetail.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ProdutosImprimeStocks.aspx.designer.vb">
+      <DependentUpon>ProdutosImprimeStocks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProdutosImprimeStocks.aspx.vb">
+      <DependentUpon>ProdutosImprimeStocks.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.vb">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.vb">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Testes.aspx.designer.vb">
+      <DependentUpon>Testes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Testes.aspx.vb">
+      <DependentUpon>Testes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Vendas.aspx.designer.vb">
+      <DependentUpon>Vendas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vendas.aspx.vb">
+      <DependentUpon>Vendas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Encomendas.aspx.designer.vb">
+      <DependentUpon>Encomendas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Encomendas.aspx.vb">
+      <DependentUpon>Encomendas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="VendasDetail.aspx.designer.vb">
+      <DependentUpon>VendasDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendasDetail.aspx.vb">
+      <DependentUpon>VendasDetail.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="VendasStats.aspx.designer.vb">
+      <DependentUpon>VendasStats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendasStats.aspx.vb">
+      <DependentUpon>VendasStats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VendasListaDocumentos.aspx.designer.vb">
+      <DependentUpon>VendasListaDocumentos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendasListaDocumentos.aspx.vb">
+      <DependentUpon>VendasListaDocumentos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="VendasPrintDoc.aspx.designer.vb">
+      <DependentUpon>VendasPrintDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VendasPrintDoc.aspx.vb">
+      <DependentUpon>VendasPrintDoc.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="OrcamDetail.aspx.designer.vb">
+      <DependentUpon>OrcamDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamDetail.aspx.vb">
+      <DependentUpon>OrcamDetail.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CR_PCFCLI1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_PCFCLI1.vb</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Reports\" />
+    <Folder Include="tempReports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties Reactor_Enabled="0" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="ALL" Reactor_Output="" Reactor_Deploy="0" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
