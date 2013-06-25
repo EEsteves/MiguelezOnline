@@ -292,3 +292,31 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+ .rounded_corners
+    {
+        border: 1px solid #4b6c9e;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        overflow: hidden;
+         padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+        border-spacing:0px;
+        background-color:Menu;
+    }
+    .rounded_corners td,  .rounded_corners th
+    {
+        border: 0px solid #4b6c9e;
+        font-family: Arial;
+        font-size: 10pt;
+        
+        padding: 0px 0px 0px 0px;
+        margin: 0px 0px 0px 0px;
+        border-spacing:0px;
+    }
+    
+    .rounded_corners table table td
+    {
+        border-style: none;
+    }
