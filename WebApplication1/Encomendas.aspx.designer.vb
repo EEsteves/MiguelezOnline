@@ -32,31 +32,31 @@ Partial Public Class Encomendas
     Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''C1Status control.
+    '''ddlStatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1Status As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlStatus As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
-    '''C1Cliente control.
+    '''ddlCliente control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1Cliente As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlCliente As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
-    '''C1Data control.
+    '''ddlDataPeriod control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1Data As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlDataPeriod As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
     '''C1Menu1 control.

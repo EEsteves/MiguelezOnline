@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master"
+﻿            <%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master"
     CodeBehind="Vendas.aspx.vb" Inherits="RobotNet.Vendas" %>
 
 <%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Menu"
@@ -55,15 +55,15 @@
                         <span class="style9"><strong>Vendas</strong></span>
                     </td>
                     <td class="style6">
-                        Situações<wijmo:C1ComboBox ID="C1ComboBox3" runat="server" Width="140px">
+                        Situações<wijmo:C1ComboBox ID="ddlStatus" runat="server" Width="140px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style8">
-                        Cliente<wijmo:C1ComboBox ID="C1ComboBox4" runat="server" Width="450px">
+                        Cliente<wijmo:C1ComboBox ID="ddlCliente" runat="server" Width="450px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style7">
-                        Data (Ano)<wijmo:C1ComboBox ID="C1ComboBox5" runat="server" Width="140px">
+                        Data (Ano)<wijmo:C1ComboBox ID="ddlDataYear" runat="server" Width="140px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                 </tr>
@@ -92,8 +92,8 @@
             </wijmo:C1Menu>
             <wijmo1:c1gridview id="C1GridView1" runat="server" clientselectionmode="SingleRow"
                 onclientselectionchanged="xSelectionChanged" allowcolmoving="True" allowcolsizing="True"
-                allowpaging="True" allowsorting="True" autogeneratecolumns="True" pagesize="15">
-        <PagerSettings PageButtonCount="20" />
+                allowpaging="True" allowsorting="True" autogeneratecolumns="True" pagesize="15" cssclass="style11">
+        <PagerSettings Mode="NextPreviousFirstLast" />
         <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
     </wijmo1:c1gridview>
             <p>

@@ -17,8 +17,7 @@ Public Class Encomendas
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("mAgentLoggedIn") = "NO" Then
-            Dim xStr As String = "~/Default.aspx"
-            Response.Redirect(xStr)
+            Response.Redirect("~/Default.aspx")
             Exit Sub
         End If
 
@@ -65,27 +64,20 @@ Public Class Encomendas
                 End If
 
                 If mSelect = True Then
-                    C1Cliente.Items.Add(New C1ComboBoxItem(f4str(fCliCode) + Trim(mCliNm)))
+                    ddlCliente.Items.Add(New C1ComboBoxItem(f4str(fCliCode) + Trim(mCliNm)))
                 End If
                 rc = d4skip(fCli, 1)
             End While
             rc = d4close(fCli)
             rc = code4initUndo(cb)
 
-            ' Carrega o dropdown de Situações
-            C1Status.Items.Add(New C1ComboBoxItem("A - Abertas"))
-            C1Status.Items.Add(New C1ComboBoxItem("C - Fechadas"))
-            C1Status.Items.Add(New C1ComboBoxItem("X - Todas"))
-            C1Status.Text = "A - Abertas"
+            ''''Carrega o dropdown de Situações
+            FillSituaçõesDropDown()
 
-            ' Carrega o dropdown de Datas
-            C1Data.Items.Add(New C1ComboBoxItem("1 - Ultimo Mês"))
-            C1Data.Items.Add(New C1ComboBoxItem("2 - Ultimo Trimestre"))
-            C1Data.Items.Add(New C1ComboBoxItem("3 - Ultimo Ano"))
-            C1Data.Items.Add(New C1ComboBoxItem("9 - Todas"))
-            C1Data.Text = "2 - Ultimo Trimestre"
+            ''''Carrega o dropdown de Datas
+            FillDataPeriodDropDown()
 
-            mSelectedStatus = Mid(C1Status.Text, 1, 1)
+            mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
             
             ''''Get Start date and end date as per the selected parameter
             GetDateValues()
@@ -99,9 +91,14 @@ Public Class Encomendas
             mRow = 0
         End If
 
-        mSelectedClient = Mid(C1Cliente.Text, 1, 8)
+        mSelectedClient = Mid(ddlCliente.Text, 1, 8)
     End Sub
 
+    ''' <summary>
+    ''' Get Orders from database
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Function LoadOrders()
         Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDbConnection(connStr)
@@ -158,15 +155,6 @@ Public Class Encomendas
         Return dataTable1
     End Function
 
-    Private Sub C1Encomendas_PageIndexChanging(sender As Object, e As C1GridViewPageEventArgs) Handles C1Encomendas.PageIndexChanging
-        C1Encomendas.PageIndex = e.NewPageIndex
-
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadOrders()
-    End Sub
-
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
         xRow = Request.Form("text2")
@@ -207,8 +195,8 @@ Public Class Encomendas
         Return ""
     End Function
 
-    Private Sub C1Status_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles C1Status.SelectedIndexChanged
-        mSelectedStatus = Mid(C1Status.Text, 1, 1)
+    Private Sub C1Encomendas_PageIndexChanging(sender As Object, e As C1GridViewPageEventArgs) Handles C1Encomendas.PageIndexChanging
+        C1Encomendas.PageIndex = e.NewPageIndex
 
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
@@ -216,8 +204,8 @@ Public Class Encomendas
         LoadOrders()
     End Sub
 
-    Private Sub C1Cliente_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles C1Cliente.SelectedIndexChanged
-        mSelectedClient = Mid(C1Cliente.Text, 1, 8)
+    Private Sub ddlStatus_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlStatus.SelectedIndexChanged
+        mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
 
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
@@ -225,8 +213,17 @@ Public Class Encomendas
         LoadOrders()
     End Sub
 
-    Private Sub C1Data_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles C1Data.SelectedIndexChanged
-        mSelectedPeriod = Trim(Mid(C1Data.Text, 1, 1))
+    Private Sub ddlCliente_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlCliente.SelectedIndexChanged
+        mSelectedClient = Mid(ddlCliente.Text, 1, 8)
+
+        ''''Get Start date and end date as per the selected parameter
+        GetDateValues()
+
+        LoadOrders()
+    End Sub
+
+    Private Sub ddlDataPeriod_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlDataPeriod.SelectedIndexChanged
+        mSelectedPeriod = Trim(Mid(ddlDataPeriod.Text, 1, 1))
 
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
@@ -246,8 +243,8 @@ Public Class Encomendas
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub GetDateValues()
-        mSelectedPeriod = Mid(C1Data.Text, 1, 1)
-        mSelectedStatus = Mid(C1Status.Text, 1, 1)
+        mSelectedPeriod = Mid(ddlDataPeriod.Text, 1, 1)
+        mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
 
         If mSelectedPeriod = String.Empty Or mSelectedPeriod = "9" Then
             mStartDt = "01-01-2000"
@@ -262,5 +259,28 @@ Public Class Encomendas
             mStartDt = DateAdd(DateInterval.Month, -12, Today).ToShortDateString
             mEndDt = Today.ToShortDateString
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Carrega o dropdown de Situações
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub FillSituaçõesDropDown()
+        ddlStatus.Items.Add(New C1ComboBoxItem("A - Abertas"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("C - Fechadas"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("X - Todas"))
+        ddlStatus.Text = "A - Abertas"
+    End Sub
+
+    ''' <summary>
+    ''' Carrega o dropdown de Datas
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub FillDataPeriodDropDown()
+        ddlDataPeriod.Items.Add(New C1ComboBoxItem("1 - Ultimo Mês"))
+        ddlDataPeriod.Items.Add(New C1ComboBoxItem("2 - Ultimo Trimestre"))
+        ddlDataPeriod.Items.Add(New C1ComboBoxItem("3 - Ultimo Ano"))
+        ddlDataPeriod.Items.Add(New C1ComboBoxItem("9 - Todas"))
+        ddlDataPeriod.Text = "2 - Ultimo Trimestre"
     End Sub
 End Class

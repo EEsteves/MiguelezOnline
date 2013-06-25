@@ -101,7 +101,9 @@
                                 autogeneratecolumns="False" width="559px" height="283px" pagesize="25" clientselectionmode="SingleRow"
                                 allowautosort="False" scrollmode="Vertical" onclientselectionchanged="xSelChanged"
                                 onclientrendered="xGridLoaded" allowsorting="True">
+                                
                         <Columns>
+                        
                             <wijmo:C1BoundField DataField="C_CLIENT" Width="100px" HeaderText="Cod">
                             </wijmo:C1BoundField>
                             <wijmo:C1BoundField DataField="C_NAME" Width="300px" HeaderText="Nome">
@@ -109,6 +111,7 @@
                             <wijmo:C1BoundField DataField="C_PHONE1" HeaderText="Telefone" Width="150px">
                             </wijmo:C1BoundField>
                         </Columns>
+                               
                     </wijmo:c1gridview>
                         </strong>
                     </td>

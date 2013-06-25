@@ -25,7 +25,7 @@ Public Class Clientes
         'Session("mSelectedAgentLoggedIn") = "YES"
         'Session("mAgentOnline") = "99"
 
-        If Session("mSelectedAgentLoggedIn") = "NO" Then
+        If Session("mAgentLoggedIn") = "NO" Then
             Dim xStr As String = "~/Default.aspx"
             Response.Redirect(xStr)
             Exit Sub

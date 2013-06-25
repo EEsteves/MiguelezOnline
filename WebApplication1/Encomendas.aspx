@@ -74,11 +74,11 @@
                         <span class="style9"><strong>Encomendas</strong></span>
                     </td>
                     <td class="style6">
-                        Situações<wijmo:C1ComboBox ID="C1Status" runat="server" Width="140px" AutoPostBack="True">
+                        Situações<wijmo:C1ComboBox ID="ddlStatus" runat="server" Width="140px" AutoPostBack="True">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style8">
-                        Cliente<wijmo:C1ComboBox ID="C1Cliente" runat="server" Width="400px" AutoPostBack="True">
+                        Cliente<wijmo:C1ComboBox ID="ddlCliente" runat="server" Width="400px" AutoPostBack="True">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style13">
@@ -86,7 +86,7 @@
                             type="text" id="text2" name="text2" size="5" class="style10" hidden="hidden" />
                     </td>
                     <td class="style7">
-                        Período<wijmo:C1ComboBox ID="C1Data" runat="server" Width="140px" AutoPostBack="True">
+                        Período<wijmo:C1ComboBox ID="ddlDataPeriod" runat="server" Width="140px" AutoPostBack="True">
                         </wijmo:C1ComboBox>
                     </td>
                 </tr>
@@ -113,7 +113,7 @@
             </wijmo:C1Menu>
             <wijmo1:c1gridview id="C1Encomendas" runat="server" clientselectionmode="SingleRow"
                 onclientselectionchanged="xSelectionChanged" allowpaging="True" allowsorting="True"
-                autogeneratecolumns="False" pagesize="14" cssclass="style11">
+                autogeneratecolumns="False" pagesize="15" cssclass="style11">
         <PagerSettings Mode="NextPreviousFirstLast" />
         <Columns>
             <wijmo1:C1BoundField DataField="E_CLIENT" HeaderText="Cliente" Width="80px" SortExpression="E_CLIENT">

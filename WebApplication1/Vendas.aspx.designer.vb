@@ -14,31 +14,49 @@ Option Explicit On
 Partial Public Class Vendas
 
     '''<summary>
-    '''C1ComboBox3 control.
+    '''progressBar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox3 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents progressBar As Global.System.Web.UI.UpdateProgress
 
     '''<summary>
-    '''C1ComboBox4 control.
+    '''uplMainPanel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox4 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''C1ComboBox5 control.
+    '''ddlStatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox5 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlStatus As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+
+    '''<summary>
+    '''ddlCliente control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlCliente As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+
+    '''<summary>
+    '''ddlDataYear control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlDataYear As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
     '''C1Menu1 control.
