@@ -45,9 +45,6 @@ Public Class Vendas
             mStatus = Mid(ddlStatus.Text, 1, 1)
 
             LoadVendas()
-
-            Dim mPages = C1GridView1.PageCount
-            C1GridView1.PageIndex = mPages - 1
         End If
 
         mSelectedClient = Mid(ddlCliente.Text, 1, 8)
@@ -118,6 +115,10 @@ Public Class Vendas
 
         C1GridView1.DataSource = dataTable1
         C1GridView1.DataBind()
+
+        ' Go to last page
+        C1GridView1.PageIndex = C1GridView1.PageCount
+
         Return True
     End Function
 
@@ -267,7 +268,7 @@ Public Class Vendas
         Dim mEndDate As DateTime
 
         If mSelectedPeriod = String.Empty Or mSelectedPeriod = "9" Then
-            mStartDate = "20120101"
+            mStartDate = DateTime.MinValue
             mEndDate = Today.ToShortDateString
         ElseIf mSelectedPeriod = "1" Then
             mStartDate = DateAdd(DateInterval.Month, -1, Today)

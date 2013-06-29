@@ -85,9 +85,6 @@ Public Class Encomendas
             ''''Gets orders from database
             LoadOrders()
 
-            ' Go to last page - 1
-            Dim mPages = C1Encomendas.PageCount
-            C1Encomendas.PageIndex = mPages - 2
             mRow = 0
         End If
 
@@ -147,8 +144,10 @@ Public Class Encomendas
         C1Encomendas.DataSource = dataTable1
         C1Encomendas.DataBind()
 
+        ' Go to last page
+        C1Encomendas.PageIndex = C1Encomendas.PageCount
         C1Encomendas.AllowKeyboardNavigation = True
-        C1Encomendas.AllowPaging = True
+
         reader.Close()
         conn.Close()
 

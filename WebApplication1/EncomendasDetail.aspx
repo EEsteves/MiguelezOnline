@@ -1,9 +1,10 @@
-﻿<%@ Page Title="Encomenda - Detalhes" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeBehind="EncomendasDetail.aspx.vb"
-    Inherits="RobotNet.EncomendasDetail" %>
+﻿<%@ Page Title="Encomenda - Detalhes" Language="vb" MasterPageFile="~/Site.Master"
+    AutoEventWireup="false" CodeBehind="EncomendasDetail.aspx.vb" Inherits="RobotNet.EncomendasDetail" %>
 
-<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1GridView" TagPrefix="wijmo1" %>
-<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Menu" TagPrefix="wijmo" %>
-
+<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1GridView"
+    TagPrefix="wijmo1" %>
+<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Menu"
+    TagPrefix="wijmo" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
         .newStyle1
@@ -67,125 +68,166 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <p class="style4">
-        <strong>Encomenda Nº&nbsp;
-            <asp:TextBox ID="TextBox1" runat="server" Width="121px" AutoPostBack="True" Font-Bold="True" ForeColor="Blue">12E05146</asp:TextBox>
-        </strong>
-    </p>
-        <wijmo:c1menu ID="C1Menu1" runat="server" CrumbDefaultText="CrumbDefaultDafaultText" AutoPostBack="True">
-        <Animation Option="">
-        </Animation>
-        <ShowAnimation Option="">
-        </ShowAnimation>
-        <HideAnimation Option="">
-            <Animated Effect="fade"></Animated>
-        </HideAnimation>
-        <Items>
-            <wijmo:C1MenuItem runat="server" Text="&lt; Anterior">
-            </wijmo:C1MenuItem>
-            <wijmo:C1MenuItem runat="server" Text="Seguinte &gt;">
-            </wijmo:C1MenuItem>
-            <wijmo:C1MenuItem runat="server" Text="Imprime Encomenda">
-            </wijmo:C1MenuItem>
-        </Items>
-    </wijmo:c1menu>
-    <table class="style5">
+    <table style="height: 440px">
         <tr>
-            <td colspan="2" class="style25">
-                <asp:Label ID="sNome" runat="server" Text="sNome" ForeColor="Blue"></asp:Label>
-                &nbsp;
-            </td>
-            <td class="style24">
-                Vendedor
-            </td>
-            <td class="style39">
-                <asp:Label ID="sVend" runat="server" Text="sVend" ForeColor="Blue"></asp:Label>
+            <td>
+                <strong>Encomenda Nº&nbsp;
+                    <asp:TextBox ID="TextBox1" runat="server" Width="121px" AutoPostBack="True" Font-Bold="True"
+                        ForeColor="Blue">12E05146</asp:TextBox>
+                </strong>
             </td>
         </tr>
         <tr>
-            <td colspan="2" class="style25">
-                <asp:Label ID="sContact" runat="server" Text="sContact" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Data
-            </td>
-            <td class="style39">
-                <asp:Label ID="sData" runat="server" Text="sData" ForeColor="Blue"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="style22">
-                Referência
-            </td>
-            <td class="style23">
-                <asp:Label ID="sRef" runat="server" Text="sRef" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Previsão
-            </td>
-            <td class="style39">
-                <asp:Label ID="sPrevista" runat="server" Text="sPrevista" ForeColor="Blue"></asp:Label>
+            <td>
+                <wijmo:C1Menu ID="C1Menu1" runat="server" CrumbDefaultText="CrumbDefaultDafaultText"
+                    AutoPostBack="True">
+                    <Animation Option="">
+                    </Animation>
+                    <ShowAnimation Option="">
+                    </ShowAnimation>
+                    <HideAnimation Option="">
+                        <Animated Effect="fade"></Animated>
+                    </HideAnimation>
+                    <Items>
+                        <wijmo:C1MenuItem runat="server" Text="&lt; Anterior">
+                        </wijmo:C1MenuItem>
+                        <wijmo:C1MenuItem runat="server" Text="Seguinte &gt;">
+                        </wijmo:C1MenuItem>
+                        <wijmo:C1MenuItem runat="server" Text="Imprime Encomenda">
+                        </wijmo:C1MenuItem>
+                    </Items>
+                </wijmo:C1Menu>
             </td>
         </tr>
         <tr>
-            <td class="style22">
-                Local
-            </td>
-            <td class="style23">
-                <asp:Label ID="sLoc1" runat="server" Text="sLoc1" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Condições
-            </td>
-            <td class="style39">
-                <asp:Label ID="sPrazo" runat="server" Text="sPrazo" ForeColor="Blue"></asp:Label>
+            <td>
+                <div class="rounded_corners" style="width: 100%; height: 150px; padding-top: 10px;"
+                    align="center">
+                    <div style="float: left; margin-left: 10px; margin-top: 10px;">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Label ID="sNome" runat="server" Text="sNome" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Label ID="sContact" runat="server" Text="sContact" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sRef">
+                                        Referência</label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="sRef" runat="server" Text="sRef" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sLoc1">
+                                        Local</label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="sLoc1" runat="server" Text="sLoc1" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sLoc2">
+                                        Entrega</label>
+                                </td>
+                                <td>
+                                    <asp:Label ID="sLoc2" runat="server" Text="sLoc2" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Label ID="sLoc3" runat="server" Text="sLoc3" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Label ID="sLoc4" runat="server" Text="sLoc4" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="float: right; margin-right: 10px; margin-top: 10px; width: 25%">
+                        <table width="80%">
+                            <tr>
+                                <td>
+                                    <label for="sVend">
+                                        Vendedor</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sVend" runat="server" Text="sVend" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sData">
+                                        Data</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sData" runat="server" Text="sData" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sPrevista">
+                                        Previsão</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sPrevista" runat="server" Text="sPrevista" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sPrazo">
+                                        Condições</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sPrazo" runat="server" Text="sPrazo" ForeColor="Blue"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sSoma">
+                                        Soma</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sSoma" runat="server" Text="sSoma" ForeColor="#990000" CssClass="style15"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sIva">
+                                        Iva</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sIva" runat="server" Text="sIva" ForeColor="#990000" CssClass="style15"></asp:Label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="sValor">
+                                        Valor</label>
+                                </td>
+                                <td align="right">
+                                    <asp:Label ID="sValor" runat="server" Text="sValor" ForeColor="#990000" CssClass="style15"></asp:Label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
-            <td class="style22">
-                Entrega
-            </td>
-            <td class="style23">
-                <asp:Label ID="sLoc2" runat="server" Text="sLoc2" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Soma
-            </td>
-            <td class="style34">
-                <asp:Label ID="sSoma" runat="server" Text="sSoma" ForeColor="#990000" CssClass="style15"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="style22">
-                &nbsp;
-            </td>
-            <td class="style23">
-                <asp:Label ID="sLoc3" runat="server" Text="sLoc3" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Iva
-            </td>
-            <td class="style34">
-                <asp:Label ID="sIva" runat="server" Text="sIva" ForeColor="#990000" CssClass="style15"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="style22">
-            </td>
-            <td class="style23">
-                <asp:Label ID="sLoc4" runat="server" Text="sLoc4" ForeColor="Blue"></asp:Label>
-            </td>
-            <td class="style24">
-                Valor
-            </td>
-            <td class="style34">
-                <asp:Label ID="sValor" runat="server" Text="sValor" ForeColor="#990000" CssClass="style15"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td class="style38" colspan="4">
-                <wijmo1:C1GridView ID="C1Encomendas" runat="server" ClientSelectionMode="SingleRow" AutogenerateColumns="False" CssClass="style40"
-                    PageSize="9">
+            <td>
+                <wijmo1:c1gridview id="C1Encomendas" runat="server" clientselectionmode="SingleRow"
+                    autogeneratecolumns="False" cssclass="style40" pagesize="9">
                     <PagerSettings Visible="False" />
                     <Columns>
                         <wijmo1:C1BoundField DataField="I_LINHA" HeaderText="Lin">
@@ -206,7 +248,7 @@
                         </wijmo1:C1BoundField>
                     </Columns>
                     <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
-                </wijmo1:C1GridView>
+                </wijmo1:c1gridview>
             </td>
         </tr>
     </table>

@@ -16,7 +16,8 @@
             width: 15px;
             height: 26px;
         }
-        .style8
+        .
+        
         {
             height: 26px;
             width: 358px;
@@ -97,7 +98,7 @@
         <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
     </wijmo1:c1gridview>
             <p>
-                <input type="text" id="text1" name="text1" size="5" /></p>
+                <input type="text" id="text1" style="display:none;" name="text1" size="5" /></p>
             <!-- Script para retornar o mRow seleccionado pelo cliente sem ir ao Servidor -->
             <script type="text/javascript">
                 function xSelectionChanged() {
