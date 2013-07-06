@@ -60,8 +60,7 @@
         <ProgressTemplate>
             <div class="overlay">
                 <div class="ajaxloader">
-                    <img src="Imagens/ajax-loader.gif" style="vertical-align: middle"
-                        alt="Processing" />Processing....
+                    <img src="Imagens/ajax-loader.gif" style="vertical-align: middle" alt="Processing" />Processing....
                 </div>
             </div>
         </ProgressTemplate>
@@ -82,8 +81,8 @@
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style13">
-                        <input type="text" id="text1" name="text1" size="5" class="style12" hidden="hidden" /><input
-                            type="text" id="text2" name="text2" size="5" class="style10" hidden="hidden" />
+                        <input type="text" id="text1" name="text1" size="5" class="style12" style="display:none" />
+                        <input type="text" id="text2" name="text2" size="5" class="style10" style="display:none" />
                     </td>
                     <td class="style7">
                         Período<wijmo:C1ComboBox ID="ddlDataPeriod" runat="server" Width="140px" AutoPostBack="True">

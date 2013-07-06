@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class Login
 
     '''<summary>
+    '''divMessage control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divMessage As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''lblInvalidLogin control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblInvalidLogin As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''C1ComboBox1 control.
     '''</summary>
     '''<remarks>

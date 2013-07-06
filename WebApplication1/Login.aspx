@@ -1,7 +1,12 @@
-﻿<%@ Page Title="Login" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeBehind="Login.aspx.vb" Inherits="RobotNet.Login" %>
-<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Menu" TagPrefix="wijmo" %>
-<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1ComboBox" TagPrefix="wijmo" %>
-<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Input" TagPrefix="wijmo" %>
+﻿<%@ Page Title="Login" Language="vb" MasterPageFile="~/Site.Master" AutoEventWireup="false"
+    CodeBehind="Login.aspx.vb" Inherits="RobotNet.Login" %>
+
+<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Menu"
+    TagPrefix="wijmo" %>
+<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1ComboBox"
+    TagPrefix="wijmo" %>
+<%@ Register Assembly="C1.Web.Wijmo.Controls.4" Namespace="C1.Web.Wijmo.Controls.C1Input"
+    TagPrefix="wijmo" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
         .style2
@@ -38,14 +43,24 @@
     <table class="style2">
         <tr>
             <td class="style4" colspan="2">
-                Por Favor, entre o seu código de Operador e Palavra Passe</td>
+                Por Favor, entre o seu código de Operador e Palavra Passe
+            </td>
         </tr>
         <tr>
             <td class="style7">
                 &nbsp;
             </td>
-            <td class="style5">
-                &nbsp;
+        </tr>
+        <tr>
+            <td class="style7">
+                <div id="divMessage" runat="server" visible="false">
+                    <div class="robotnet-err-all">
+                        <asp:Label runat="server" ID="lblInvalidLogin" />
+                    </div>
+                    <div>
+                        &nbsp;
+                    </div>
+                </div>
             </td>
         </tr>
         <tr>
@@ -72,7 +87,7 @@
                 Palavra Passe
             </td>
             <td class="style5">
-                &nbsp;<wijmo:C1InputMask ID="sPassword" runat="server">
+                &nbsp;<wijmo:C1InputMask ID="sPassword" runat="server" PromptChar=" " PasswordChar="*" Mask="AAAA">
                 </wijmo:C1InputMask>
             </td>
         </tr>

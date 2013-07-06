@@ -4,7 +4,6 @@ Public Class Login
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -54,13 +53,7 @@ Public Class Login
         End If
 
         Session("mAgentLoggedIn") = "NO"
-        Dim strMessage As String
-        strMessage = "Login Inválido " & mOper + " " + mPassword
-        Dim strScript As String = "<script language=JavaScript>"
-        strScript = strScript + "alert(""" & strMessage & """);"
-        strScript = strScript + "</script>"
-        If (Not Page.ClientScript.IsStartupScriptRegistered("clientScript")) Then
-            Page.ClientScript.RegisterClientScriptBlock(Me.GetType(), "clientScript", strScript)
-        End If
+        divMessage.Visible = True
+        lblInvalidLogin.Text = "Login Inválido " & mOper + " " + mPassword
     End Sub
 End Class

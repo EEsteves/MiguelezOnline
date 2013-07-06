@@ -134,7 +134,7 @@ Public Class Vendas
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
         xRow = Request.Form("text1")
-        mDocNum = C1GridView1.Rows(xRow).Cells(1).Text
+        mDocNum = C1GridView1.Rows(xRow).Cells(0).Text
 
         If e.Item.Text = "Visualiza" Then
             Dim xStr As String = "~/VendasDetail.aspx?field1=" + Trim(mDocNum)
@@ -172,9 +172,9 @@ Public Class Vendas
     ''' <remarks></remarks>
     Private Sub FillSituaçõesDropDown()
         ddlStatus.Items.Add(New C1ComboBoxItem("A - Abertas"))
-        ddlStatus.Items.Add(New C1ComboBoxItem("B - Fechadas"))
-        ddlStatus.Items.Add(New C1ComboBoxItem("C - Todas"))
-        ddlStatus.Text = "A - Abertas"
+        ddlStatus.Items.Add(New C1ComboBoxItem("B - Pendentes"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("C - Fechadas"))
+        ddlStatus.Text = "B - Pendentes"
     End Sub
 
     ''' <summary>

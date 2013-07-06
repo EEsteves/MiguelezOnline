@@ -1,11 +1,11 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
-body   
+body
 {
     background: #b6b7bc;
     font-size: small;
-    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
     color: #696969;
@@ -145,8 +145,8 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
-    width:100%;
+    background-color: #3a4f63;
+    width: 100%;
 }
 
 div.menu
@@ -198,7 +198,7 @@ fieldset
     border: 1px solid #ccc;
 }
 
-fieldset p 
+fieldset p
 {
     margin: 2px 12px 10px 10px;
 }
@@ -208,24 +208,24 @@ fieldset.login label, fieldset.register label, fieldset.changePassword label
     display: block;
 }
 
-fieldset label.inline 
+fieldset label.inline
 {
     display: inline;
 }
 
-legend 
+legend
 {
     font-size: 1.1em;
     font-weight: 600;
     padding: 2px 4px 8px 4px;
 }
 
-input.textEntry 
+input.textEntry
 {
     border: 1px solid #ccc;
 }
 
-input.passwordEntry 
+input.passwordEntry
 {
     border: 1px solid #ccc;
 }
@@ -293,30 +293,38 @@ div.accountInfo
     padding-right: 10px;
 }
 
- .rounded_corners
-    {
-        border: 1px solid #4b6c9e;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        overflow: hidden;
-         padding: 0px 0px 0px 0px;
-        margin: 0px 0px 0px 0px;
-        border-spacing:0px;
-        background-color:Menu;
-    }
-    .rounded_corners td,  .rounded_corners th
-    {
-        border: 0px solid #4b6c9e;
-        font-family: Arial;
-        font-size: 10pt;
-        
-        padding: 0px 0px 0px 0px;
-        margin: 0px 0px 0px 0px;
-        border-spacing:0px;
-    }
-    
-    .rounded_corners table table td
-    {
-        border-style: none;
-    }
+.rounded_corners
+{
+    border: 1px solid #4b6c9e;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border-spacing: 0px;
+    background-color: Menu;
+}
+.rounded_corners td, .rounded_corners th
+{
+    border: 0px solid #4b6c9e;
+    font-family: Arial;
+    font-size: 10pt;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border-spacing: 0px;
+}
+
+.rounded_corners table table td
+{
+    border-style: none;
+}
+
+.robotnet-err-all
+{
+    background: none repeat scroll 0 0 #FCE7E7;
+    border: 1px solid #BB0000;
+    color: #BB0000;
+    padding: 5px;
+    text-align: left;
+}

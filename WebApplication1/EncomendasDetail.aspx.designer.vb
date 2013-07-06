@@ -41,15 +41,6 @@ Partial Public Class EncomendasDetail
     Protected WithEvents sNome As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''sVend control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sVend As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''sContact control.
     '''</summary>
     '''<remarks>
@@ -57,15 +48,6 @@ Partial Public Class EncomendasDetail
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sContact As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''sData control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sData As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''sRef control.
@@ -77,15 +59,6 @@ Partial Public Class EncomendasDetail
     Protected WithEvents sRef As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''sPrevista control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sPrevista As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''sLoc1 control.
     '''</summary>
     '''<remarks>
@@ -93,15 +66,6 @@ Partial Public Class EncomendasDetail
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sLoc1 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''sPrazo control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sPrazo As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''sLoc2 control.
@@ -113,15 +77,6 @@ Partial Public Class EncomendasDetail
     Protected WithEvents sLoc2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''sSoma control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sSoma As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''sLoc3 control.
     '''</summary>
     '''<remarks>
@@ -131,15 +86,6 @@ Partial Public Class EncomendasDetail
     Protected WithEvents sLoc3 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''sIva control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents sIva As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''sLoc4 control.
     '''</summary>
     '''<remarks>
@@ -147,6 +93,60 @@ Partial Public Class EncomendasDetail
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents sLoc4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sVend control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sVend As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sData control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sData As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sPrevista control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sPrevista As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sPrazo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sSoma control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sSoma As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sIva control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sIva As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''sValor control.

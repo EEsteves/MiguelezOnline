@@ -59,15 +59,6 @@ Partial Public Class Clientes
     Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Button1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Label2 control.
     '''</summary>
     '''<remarks>
@@ -75,6 +66,15 @@ Partial Public Class Clientes
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Button1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Label3 control.
@@ -113,13 +113,22 @@ Partial Public Class Clientes
     Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Label8 control.
+    '''lblContacto control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblContacto As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lnkTelefone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lnkTelefone As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
     '''sPlafond control.
@@ -212,13 +221,13 @@ Partial Public Class Clientes
     Protected WithEvents sUltAno As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''lblEmail control.
+    '''lnkEmail control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents lblEmail As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lnkEmail As Global.System.Web.UI.HtmlControls.HtmlAnchor
 
     '''<summary>
     '''Label10 control.

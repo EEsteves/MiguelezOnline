@@ -16,8 +16,7 @@
             width: 15px;
             height: 26px;
         }
-        .
-        
+        .style8
         {
             height: 26px;
             width: 358px;

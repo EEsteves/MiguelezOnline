@@ -35,20 +35,18 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Código de Cliente&nbsp;
                         <input type="text" id="text1" name="text1" size="5" />
                         &nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="text" id="text2" name="text2" size="5" hidden="hidden" />
+                        <input type="text" id="text2" name="text2" size="5" style="diplay: none;" hidden="hidden" />
                     </td>
                 </tr>
                 <tr>
                     <td valign="top" align="left">
                         <div class="rounded_corners" style="width: 580px; height: 450px; padding-top: 10px;"
-                            align="center">
+                            align="left">
                             <wijmo:c1gridview id="C1Clientes" runat="server" style="top: 0px; left: 0px; font-size: small;"
                                 autogeneratecolumns="False" width="559px" height="270px" pagesize="25" clientselectionmode="SingleRow"
                                 allowautosort="False" scrollmode="Vertical" onclientselectionchanged="xSelChanged"
                                 onclientrendered="xGridLoaded" allowsorting="True">
-                                
                         <Columns>
-                        
                             <wijmo:C1BoundField DataField="C_CLIENT" Width="100px" HeaderText="Cod">
                             </wijmo:C1BoundField>
                             <wijmo:C1BoundField DataField="C_NAME" Width="300px" HeaderText="Nome">
@@ -94,12 +92,13 @@
                                 </tr>
                                 <tr>
                                     <td align="left" style="padding-left: 10px;">
-                                        Contacto
+                                        Contacto&nbsp; &nbsp; &nbsp;
+                                        <asp:Label ID="lblContacto" runat="server" />
                                     </td>
                                     <td align="right" style="padding-right: 6px; width: 190px;">
                                         <br />
                                         Telefone &nbsp; &nbsp; &nbsp;
-                                        <asp:Label ID="Label8" runat="server" Text="211 234 567"></asp:Label>
+                                        <a ID="lnkTelefone" runat="server" />
                                     </td>
                                 </tr>
                             </table>
@@ -203,7 +202,7 @@
                             </tr>
                             <tr>
                                 <td align="left" colspan="2" style="padding-left: 5px;">
-                                    <asp:Label ID="lblEmail" runat="server" Text="Email" />
+                                    <a runat="server" id="lnkEmail" />  
                                 </td>
                             </tr>
                             <tr>
