@@ -4,8 +4,9 @@ Imports Microsoft.JScript
 Imports MVXSOCKX_SVRLib
 
 Public Class Produtos
-    Inherits System.Web.UI.Page
+    Inherits Page
     Dim Sock As New MvxSockX
+
     Private dataTable1 As New DataTable("Produtos")
     Private dataTable2 As New DataTable("Bobines")
     Private dataTable3 As New DataTable("Fabrica")

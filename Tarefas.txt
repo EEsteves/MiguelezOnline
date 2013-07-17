@@ -1,2 +1,0 @@
-Correr o runtime do CR2011
-Instalar o Visual Fox Pro 9 ODBC drivers

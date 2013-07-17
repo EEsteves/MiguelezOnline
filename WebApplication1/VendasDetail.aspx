@@ -53,12 +53,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="rounded_corners" style="width: 100%; height: 180px; padding-top: 10px;"
-                            align="center">
-                            <div style="float: left; margin-left: 10px; margin-top: 10px;">
-                                <table>
-                                    <tr>
-                                        <td>
+                        <div class="rounded_corners" style="width: 100%; height: 190px; padding-top: 10px;"
+                            align="left">
+                            <div style="float: left; margin-left: 15px; margin-top: 10px; width: 50%;">
+                                <table width="80%">
+                                    <tr align="left">
+                                        <td align="left" style="width: 35%">
                                             <label for="lblNumero">
                                                 Numero</label>
                                         </td>
@@ -66,7 +66,7 @@
                                             <asp:Label ID="lblNumero" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblCliente">
                                                 Cliente</label>
@@ -75,7 +75,7 @@
                                             <asp:Label ID="lblCliente" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblCliente">
                                                 Data</label>
@@ -84,7 +84,7 @@
                                             <asp:Label ID="lblData" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblCondPage">
                                                 Cond Page</label>
@@ -93,7 +93,7 @@
                                             <asp:Label ID="lblCondPage" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblVencimento">
                                                 Vencimento</label>
@@ -102,7 +102,7 @@
                                             <asp:Label ID="lblVencimento" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblAtrazo">
                                                 Atrazo</label>
@@ -111,30 +111,30 @@
                                             <asp:Label ID="lblAtrazo" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblTotalSemIVA">
                                                 Total Sem IVA</label>
                                         </td>
-                                        <td align="right">
+                                        <td>
                                             <asp:Label ID="lblTotSemIVA" runat="server" ForeColor="#990000" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblIVA">
                                                 IVA</label>
                                         </td>
-                                        <td align="right">
+                                        <td>
                                             <asp:Label ID="lblIVA" runat="server" ForeColor="#990000" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td>
                                             <label for="lblTotalComIVA">
                                                 Total Com IVA</label>
                                         </td>
-                                        <td align="right">
+                                        <td>
                                             <asp:Label ID="lblTotalComIVA" runat="server" ForeColor="#990000" />
                                         </td>
                                     </tr>
@@ -143,9 +143,12 @@
                             <div style="float: right; margin-right: 10px; margin-top: 10px; width: 40%">
                                 <table width="80%">
                                     <tr>
-                                        <td colspan="3" align="center">
+                                        <td align="left">
                                             <label for="sVend">
                                                 Tipo de Documento</label>
+                                        </td>
+                                        <td colspan="2" align="left">
+                                        <asp:Label runat="server" id="lblTipoDeDocumento" ForeColor="Blue" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -153,8 +156,8 @@
                                             &nbsp;
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td valign="top">
+                                    <tr align="left">
+                                        <td valign="top" style="width: 25%">
                                             <label for="lblNome">
                                                 Nome</label>
                                         </td>
@@ -162,7 +165,7 @@
                                             <asp:Label ID="lblNome" runat="server" ForeColor="Blue" />
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr align="left">
                                         <td valign="top">
                                             <label for="lblAddress">
                                                 Address</label>
@@ -182,19 +185,19 @@
                             autogeneratecolumns="False" height="161px" pagesize="9">
                     <PagerSettings Visible="False" />
                     <Columns>
-                        <wijmo1:C1BoundField DataField="A_PRODUCT" HeaderText="Produto">
+                        <wijmo1:C1BoundField DataField="Produto" HeaderText="Produto">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_NAME" HeaderText="Nome">
+                        <wijmo1:C1BoundField HeaderText="Nome">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_QUANT" HeaderText="Quant">
+                        <wijmo1:C1BoundField DataField="Quant" HeaderText="Quant">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_UNIT" HeaderText="Unit" DataFormatString="n">
+                        <wijmo1:C1BoundField DataField="Unit" HeaderText="Unit" DataFormatString="n">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_VALOR" HeaderText="Valor">
+                        <wijmo1:C1BoundField DataField="Valor" HeaderText="Valor">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_DESCONTOS" HeaderText="Descontos">
+                        <wijmo1:C1BoundField DataField="Descontos" HeaderText="Descontos">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField DataField="A_VALORCOMIVA" HeaderText="Valor com IVA">
+                        <wijmo1:C1BoundField DataField="ValorcomIVA" HeaderText="Valor com IVA">
                         </wijmo1:C1BoundField>
                     </Columns>
                     <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />

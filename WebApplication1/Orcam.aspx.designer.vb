@@ -32,31 +32,31 @@ Partial Public Class Orcam
     Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
 
     '''<summary>
-    '''C1ComboBox1 control.
+    '''ddlStatus control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox1 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlStatus As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
-    '''C1ComboBox2 control.
+    '''ddlCliente control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox2 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlCliente As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
-    '''C1ComboBox3 control.
+    '''ddlDataYear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1ComboBox3 As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
+    Protected WithEvents ddlDataYear As Global.C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBox
 
     '''<summary>
     '''C1Menu1 control.
@@ -77,15 +77,6 @@ Partial Public Class Orcam
     Protected WithEvents C1MenuItem1 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
 
     '''<summary>
-    '''C1MenuItem2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents C1MenuItem2 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
-
-    '''<summary>
     '''C1MenuItem3 control.
     '''</summary>
     '''<remarks>
@@ -104,11 +95,11 @@ Partial Public Class Orcam
     Protected WithEvents C1MenuItem4 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
 
     '''<summary>
-    '''C1GridView1 control.
+    '''grdOrcam control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1GridView1 As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
+    Protected WithEvents grdOrcam As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
 End Class

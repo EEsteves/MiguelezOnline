@@ -1,14 +1,20 @@
 ﻿Imports Microsoft.JScript
 Imports C1.Web.Wijmo.Controls.C1ComboBox
+Imports System.Data.OleDb
+Imports C1.Web.Wijmo.Controls.C1GridView
 
 Public Class Orcam
     Inherits System.Web.UI.Page
 
-    Private dataTable1 As New DataTable("Orcam")
-    Private PageNum As Integer
-    Private rc As Integer = 0
-    Private mStatus As String = ""
-    Private mVend As String = ""
+    Dim dataTable1 As New DataTable("Orcam")
+    Dim PageNum As Integer
+    Dim rc As Long = 0
+    Private selectedStatus As String = String.Empty
+    Private selectedClient As String = String.Empty
+    Private selectedAgent As String = String.Empty
+    Private selectedPeriod As String = String.Empty
+    Dim startDate As String = String.Empty
+    Dim endDate As String = String.Empty
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Session("mAgentLoggedIn") = "NO" Then
@@ -16,6 +22,8 @@ Public Class Orcam
             Response.Redirect(xStr)
             Exit Sub
         End If
+
+        selectedAgent = Session("mAgentOnline")
 
         ' Colunas da Tabela de Orçamentos
         dataTable1.Columns.Add("Número")
@@ -26,105 +34,104 @@ Public Class Orcam
         dataTable1.Columns.Add("Data")
         dataTable1.Columns.Add("Valor")
 
+        If (Not IsPostBack) Then
+            ''''Carrega o dropdown de Situações
+            FillSituaçõesDropDown()
 
-        ' Grid1.ScrollMode = C1.Web.Wijmo.Controls.C1GridView.ScrollMode.Vertical
-        ' Grid1.AutogenerateColumns = True
+            ''''Carrega o dropdown de Datas
+            FillDataPeriodDropDown()
 
-        ' Carrega o dropdown de Clientes
-        Dim cb = code4init()
-        Dim fOrc As Integer = d4open(cb, fPCFCLI)
-        Dim tag As Integer = d4tag(fOrc, "PCFCLI2")
-        Call d4tagSelect(fOrc, tag)
-        Dim fName As Integer = d4field(fOrc, "C_NAME")
-        Dim fStatus As Integer = d4field(fOrc, "C_STATUS")
-        rc = d4top(fOrc)
-        While d4eof(fOrc) = 0
-            C1ComboBox2.Items.Add(New C1ComboBoxItem(Trim(f4str(fName))))
-            rc = d4skip(fOrc, 1)
-        End While
-        rc = d4close(fOrc)
-        rc = code4initUndo(cb)
+            FillClientDropDown()
 
-        xLoadOrcam()
+            ''''Get Start date and end date as per the selected parameter
+            GetDateValues()
+
+            LoadOrcam()
+        End If
         mRow = 0
     End Sub
 
-    Function xLoadOrcam()
-        Dim row As DataRow
-        Dim expr As String
-        Dim relation As Long
-        Dim fOrc As Long
-        dataTable1.Clear()
-        Dim cb = code4init()
-        fOrc = d4open(cb, fPCFORC)
-        Dim fStatus As Integer = d4field(fOrc, "K_STATUS")
-        Dim fNumber As Integer = d4field(fOrc, "K_ORCAM")
-        Dim fClient As Integer = d4field(fOrc, "K_CLIENT")
-        Dim fName As Integer = d4field(fOrc, "K_NAME")
-        Dim fVend As Integer = d4field(fOrc, "K_AGENTE")
-        Dim fDate As Integer = d4field(fOrc, "K_ORC_DT")
-        Dim fTotliq As Integer = d4field(fOrc, "K_TOTLIQ")
-        relation = relate4init(fOrc)
-        If relation = 0 Then
-            Return False
-        End If
-        If Session("mAgentOnline") = "99" Then
-            expr = "DTOS(K_ORC_DT) >= '20120101'"
+    Function LoadOrcam()
+        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim conn As New OleDbConnection(connStr)
+        Dim cmd As New OleDbCommand()
+        cmd.Connection = conn
+
+        Dim sqlString As String = "SELECT K_STATUS, K_ORCAM, K_CLIENT, K_NAME, K_AGENTE, K_ORC_DT, K_TOTLIQ FROM PCFORC WHERE "
+
+        If selectedStatus = "X" Then
+            sqlString += "K_STATUS LIKE '[ABCD]%' "
         Else
-            Dim mAgt As String = Session("mAgentOnline")
-            expr = "DTOS(K_ORC_DT) >= '20120101' .AND. K_AGENTE = '" + mAgt + "' .AND. K_STATUS <> 'A'"
+            sqlString += "K_STATUS = '" + selectedStatus + "' "
         End If
-        Dim order As String = "K_ORC_DT"
-        rc = relate4querySet(relation, expr)
-        rc = relate4sortSet(relation, order)
-        rc = relate4top(relation)
-        Dim count As Integer = 0
-        Do While rc = r4success
-            row = dataTable1.NewRow()
-            row("Número") = f4str(fNumber)
-            row("Cliente") = f4str(fClient)
-            row("Nome") = f4str(fName)
-            row("Sit") = f4str(fStatus)
-            row("Vend") = f4str(fVend)
-            Dim xDate As String = f4str(fDate)
-            row("Data") = Mid(xDate, 7, 2) + "/" + Mid(xDate, 5, 2) + "/" + Mid(xDate, 1, 4)
 
-            ' Dim st As String = Format(f4long(fTotliq), "#,###,##0.00")
-            ' row("Valor") = st.PadLeft(30 - Len(st), " ")
+        If Len(Trim(selectedAgent)) > 0 Then
+            sqlString += "AND K_AGENTE = '" + selectedAgent + "' "
+        End If
 
-            v1 = f4double(fTotliq)
-            row("Valor") = v1
+        If Len(Trim(selectedClient)) > 0 Then
+            sqlString += "AND K_CLIENT = '" + selectedClient + "' "
+        End If
 
+        sqlString += "AND K_ORC_DT BETWEEN CDATE('" + startDate + "') AND CDATE('" + endDate + "') "
 
-            dataTable1.Rows.Add(row)
-            rc = relate4skip(relation, 1)
-        Loop
-        rc = relate4free(relation, 0)
-        rc = d4close(fOrc)
-        rc = code4initUndo(cb)
-        C1GridView1.DataSource = dataTable1
-        C1GridView1.DataBind()
-        Dim mPages = C1GridView1.PageCount
-        C1GridView1.PageIndex = mPages - 1
-        C1GridView1.DataBind()
+        cmd.CommandText = sqlString
+        conn.Open()
 
-        'Dim ccc As Integer = C1GridView1.Columns.Count
-        'MsgBox(CStr(ccc))
+        Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
+        Dim dataTable1 As New DataTable
+        dataTable1.Load(reader)
 
-        'C1GridView1.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right
+        grdOrcam.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Numero
+        grdOrcam.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Cliente
+        grdOrcam.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Vendedor
+        grdOrcam.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Data     
+        grdOrcam.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Sit
+        grdOrcam.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor
 
+        grdOrcam.DataSource = dataTable1
+        grdOrcam.DataBind()
+
+        reader.Close()
+        conn.Close()
         Return True
     End Function
 
-    Private Sub C1GridView1_PageIndexChanging(sender As Object, e As C1.Web.Wijmo.Controls.C1GridView.C1GridViewPageEventArgs) Handles C1GridView1.PageIndexChanging
-        C1GridView1.PageIndex = e.NewPageIndex
-        C1GridView1.DataBind()
+    Private Sub grdOrcam_PageIndexChanging(sender As Object, e As C1GridViewPageEventArgs) Handles grdOrcam.PageIndexChanging
+        grdOrcam.PageIndex = e.NewPageIndex
+
+        ''''Get Start date and end date as per the selected parameter
+        GetDateValues()
+
+        LoadOrcam()
+    End Sub
+
+    Protected Sub ddlStatus_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlStatus.SelectedIndexChanged
+        selectedStatus = Mid(ddlStatus.Text, 1, 1)
+
+        ''''Populate grid control from database values
+        PopulateGridControl()
+    End Sub
+
+    Protected Sub ddlCliente_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlCliente.SelectedIndexChanged
+        selectedClient = Mid(ddlCliente.Text, 1, 8)
+
+        ''''Populate grid control from database values
+        PopulateGridControl()
+    End Sub
+
+    Protected Sub ddlDataYear_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlDataYear.SelectedIndexChanged
+        selectedPeriod = Trim(Mid(ddlDataYear.Text, 1, 1))
+
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1.Web.Wijmo.Controls.C1Menu.C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
         xRow = Request.Form("text1")
-        mProdNum = C1GridView1.Rows(xRow).Cells(1).Text
+        mProdNum = grdOrcam.Rows(xRow).Cells(1).Text
+
         If e.Item.Text = "Visualiza" Then
             'Dim xStr As String = "~/ClientesDetail.aspx?field1=" + Trim(mCliNum)
             'Response.Redirect(xStr)
@@ -158,8 +165,120 @@ Public Class Orcam
         Return ""
     End Function
 
-    Private Sub C1GridView1_PreRender(sender As Object, e As System.EventArgs) Handles C1GridView1.PreRender
-        'Dim col As New C1.Web.Wijmo.Controls.C1GridView.
-        'C1GridView1.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right
+    Private Sub FillClientDropDown()
+        ' Carrega o dropdown de Clientes
+        Dim cb = code4init()
+        Dim fCli As Integer = d4open(cb, fPCFCLI)
+        Dim tag As Integer = d4tag(fCli, "PCFCLI2")
+        Call d4tagSelect(fCli, tag)
+        Dim fCliCode As Integer = d4field(fCli, "C_CLIENT")
+        Dim fName As Integer = d4field(fCli, "C_NAME")
+        Dim fVend As Integer = d4field(fCli, "C_VEND")
+
+        rc = d4top(fCli)
+
+        While d4eof(fCli) = 0
+            mCliNm = f4str(fName)
+            mCliVend = f4str(fVend)
+
+            If selectedAgent = "99" Then
+                mSelect = True
+            Else
+                If Trim(mCliVend) = selectedAgent Then
+                    mSelect = True
+                Else
+                    mSelect = False
+                End If
+            End If
+
+            If Len(Trim(mCliNm)) = 0 Then
+                mSelect = False
+            End If
+
+            If mSelect = True Then
+                ddlCliente.Items.Add(New C1ComboBoxItem(f4str(fCliCode) + Trim(mCliNm)))
+            End If
+            rc = d4skip(fCli, 1)
+        End While
+
+        rc = d4close(fCli)
+        rc = code4initUndo(cb)
+    End Sub
+
+    ''' <summary>
+    ''' Get Start date and end date as per the selected parameter
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub GetDateValues()
+        selectedPeriod = Mid(ddlDataYear.Text, 1, 1)
+        selectedStatus = Mid(ddlStatus.Text, 1, 1)
+        selectedClient = Mid(ddlCliente.Text, 1, 8)
+
+        Dim mStartDate As DateTime
+        Dim mEndDate As DateTime
+
+        If selectedPeriod = String.Empty Or selectedPeriod = "9" Then
+            mStartDate = DateTime.MinValue
+            mEndDate = Today.ToShortDateString
+        ElseIf selectedPeriod = "1" Then
+            mStartDate = DateAdd(DateInterval.Month, -1, Today)
+            mEndDate = Today.ToShortDateString
+        ElseIf selectedPeriod = "2" Then
+            mStartDate = DateAdd(DateInterval.Month, -3, Today)
+            mEndDate = Today.ToShortDateString
+        ElseIf selectedPeriod = "3" Then
+            mStartDate = DateAdd(DateInterval.Month, -12, Today)
+            mEndDate = Today.ToShortDateString
+        End If
+
+        startDate = String.Format("{0:dd-MM-yyyy}", mStartDate)
+        endDate = String.Format("{0:dd-MM-yyyy}", mEndDate)
+    End Sub
+
+    ''' <summary>
+    ''' Carrega o dropdown de Situações
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub FillSituaçõesDropDown()
+        ddlStatus.Items.Add(New C1ComboBoxItem("A - Abertas"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("B - Fechadas"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("C - Todas"))
+        ddlStatus.Text = "A - Abertas"
+    End Sub
+
+    ''' <summary>
+    ''' Carrega o dropdown de Datas
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub FillDataPeriodDropDown()
+        ddlDataYear.Items.Add(New C1ComboBoxItem("1 - Ultimo Mês"))
+        ddlDataYear.Items.Add(New C1ComboBoxItem("2 - Ultimo Trimestre"))
+        ddlDataYear.Items.Add(New C1ComboBoxItem("3 - Ultimo Ano"))
+        ddlDataYear.Items.Add(New C1ComboBoxItem("9 - Todas"))
+        ddlDataYear.Text = "2 - Ultimo Trimestre"
+    End Sub
+
+    ''' <summary>
+    ''' Populate grid control from database values
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub PopulateGridControl()
+        ''''Get Start date and end date as per the selected parameter
+        GetDateValues()
+
+        ''''Gets orders from database
+        LoadOrcam()
+
+        ' Go to last page
+        NavigateGridToLastPage()
+    End Sub
+
+    ''' <summary>
+    ''' Go to last page in the grid
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub NavigateGridToLastPage()
+        grdOrcam.PageIndex = grdOrcam.PageCount
+        grdOrcam.AllowKeyboardNavigation = True
     End Sub
 End Class

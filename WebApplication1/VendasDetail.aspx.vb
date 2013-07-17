@@ -3,9 +3,10 @@
 Public Class VendasDetail
     Inherits System.Web.UI.Page
 
-    Private selectedVendas As String = String.Empty
-    Private dtVendasDetails As New DataTable("Facturas")
-    Private selectedAgent As String = String.Empty
+    Dim selectedVendas As String = String.Empty
+    Dim dtVendasDetails As New DataTable("Facturas")
+    Dim selectedAgent As String = String.Empty
+    Dim rc As Integer = 0
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         selectedAgent = Session("mAgentOnline")
@@ -25,7 +26,7 @@ Public Class VendasDetail
                 txtSelectedVendas.Text = selectedVendas
 
                 ShowVendasHeader(selectedVendas)
-                'ShowVendasDetails(selectedVendas)
+                ShowVendasDetails(selectedVendas)
             End If
         End If
     End Sub
@@ -79,7 +80,7 @@ Public Class VendasDetail
         txtSelectedVendas.Text = selectedVendas
 
         ShowVendasHeader(selectedVendas)
-        'ShowVendasDetails(selectedVendas)
+        ShowVendasDetails(selectedVendas)
     End Sub
 
     Private Sub GetPreviousRecords()
@@ -110,7 +111,7 @@ Public Class VendasDetail
         conn.Close()
 
         ShowVendasHeader(selectedVendas)
-        'ShowVendasDetails(selectedVendas)
+        ShowVendasDetails(selectedVendas)
     End Sub
 
     Private Sub ShowVendasHeader(selectedVendas As String)
@@ -119,7 +120,7 @@ Public Class VendasDetail
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
 
-        Dim sqlString As String = "SELECT F_NUMBER, F_CLIENT, F_INV_DT, F_DAYS_PP, F_TOTLIQ, "
+        Dim sqlString As String = "SELECT F_NUMBER, F_TYPE, F_CLIENT, F_INV_DT, F_DAYS_PP, F_TOTLIQ, "
         sqlString += "F_IVA, F_NAME, F_ADDR_1, F_ADDR_2, F_CITY, F_POSTAL, F_PTL_NM, F_COUNTRY "
         sqlString += "FROM PCFFCT WHERE F_NUMBER = '" + selectedVendas + "' "
         cmd.CommandText = sqlString
@@ -142,6 +143,8 @@ Public Class VendasDetail
             lblIVA.Text = Format(vatAmount, "###,##0.00")
             lblTotalComIVA.Text = Format(totalLiq, "###,##0.00")
 
+            lblTipoDeDocumento.Text = GetTextForTipoDeDocumento(Convert.ToString(reader("F_TYPE")))
+
             lblNome.Text = Convert.ToString(reader("F_NAME"))
             Dim address As String = Convert.ToString(reader("F_ADDR_1")) + ", " + _
                 Convert.ToString(reader("F_ADDR_2")) + ", " + _
@@ -157,35 +160,89 @@ Public Class VendasDetail
         conn.Close()
     End Sub
 
-    Private Sub ShowVendasDetails(selectedVendas As String)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
-        Dim conn As New OleDb.OleDbConnection(connStr)
-        Dim cmd As New OleDb.OleDbCommand()
-        cmd.Connection = conn
+    Private Function ShowVendasDetails(selectedVendas As String)
+        Dim row As DataRow
+        Dim expr As String
+        Dim relation As Long
+        Dim fMov As Long
+        dtVendasDetails.Clear()
+        Dim cb = code4init()
 
-        Dim sqlString As String = "SELECT A_PRODUCT, A_QUANT, FORMAT(A_UNIT,'###,##0.00000') AS A_UNIT, "
-        sqlString += "A_QUANT * A_UNIT AS A_VALOR, A_DESCT + A_DESCT2 + A_DESCT3 + A_DESCT4 AS A_DESCONTOS, "
-        sqlString += "A_IVA AS A_VALORCOMIVA FROM PCFMOV WHERE A_NUMBER = '" + selectedVendas + "' "
+        fMov = d4open(cb, fPCFMOV)
 
-        cmd.CommandText = sqlString
-        conn.Open()
+        Dim product As Integer = d4field(fMov, "A_PRODUCT")
+        'Dim name As String = d4field(fMov, "A_NAME")
+        Dim quantity As Integer = d4field(fMov, "A_QUANT")
+        Dim unit As Integer = d4field(fMov, "A_UNIT")
+        Dim firstDiscount As Decimal = d4field(fMov, "A_DESCT")
+        Dim secondDiscount As Decimal = d4field(fMov, "A_DESCT2")
+        Dim thirdDiscount As Decimal = d4field(fMov, "A_DESCT3")
+        Dim fourthDiscount As Decimal = d4field(fMov, "A_DESCT4")
+        Dim fVat As Integer = d4field(fMov, "A_IVA")
+        relation = relate4init(fMov)
 
-        Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
-        dtVendasDetails.Load(reader)
+        If relation = 0 Then
+            Return False
+        End If
 
-        'grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Linha
-        'grdVendasDetails.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Embalagem
-        'grdVendasDetails.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Quant
-        'grdVendasDetails.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Unit
-        'grdVendasDetails.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Valor
-        'grdVendasDetails.Columns(7).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Falta  
+        expr = "A_NUMBER = '" + selectedVendas + "'"
+
+        rc = relate4querySet(relation, expr)
+        rc = relate4top(relation)
+
+        Dim count As Integer = 0
+        Do While rc = r4success
+            count = count + 1
+            row = dtVendasDetails.NewRow()
+            row("Produto") = f4long(product)
+            'row("Nome") = f4str(name)
+            row("Quant") = f4number(quantity)
+            row("Unit") = f4decimals(unit)
+            row("Valor") = f4number(quantity) * f4decimals(unit)
+            row("Descontos") = Format(f4number(firstDiscount) + f4number(secondDiscount) + f4number(thirdDiscount) + f4number(fourthDiscount), "###,##0.00")
+            row("ValorcomIVA") = Format(f4number(fVat), "###,##0.00")
+            dtVendasDetails.Rows.Add(row)
+            rc = relate4skip(relation, 1)
+        Loop
+
+        rc = relate4free(relation, 0)
+        rc = d4close(fMov)
+        rc = code4initUndo(cb)
+
+
+        grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Producto
+        grdVendasDetails.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Nome
+        grdVendasDetails.Columns(2).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Quant
+        grdVendasDetails.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Unit
+        grdVendasDetails.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor     
+        grdVendasDetails.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Descontos
+        grdVendasDetails.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor com IVA
 
         grdVendasDetails.DataSource = dtVendasDetails
-        grdVendasDetails.ScrollMode = ScrollMode.Vertical
+        grdVendasDetails.ScrollMode = C1.Web.Wijmo.Controls.C1GridView.ScrollMode.Vertical
         grdVendasDetails.DataBind()
-        grdVendasDetails.PageSize = 9
 
-        reader.Close()
-        conn.Close()
-    End Sub
+        ' Go to last page
+        grdVendasDetails.PageIndex = grdVendasDetails.PageCount
+        Return True
+    End Function
+
+    Private Function GetTextForTipoDeDocumento(fType As String)
+        Dim fTypeString As String = String.Empty
+
+        Select Case fType
+            Case "F"
+                fTypeString = "FATURA"
+            Case "C"
+                fTypeString = "NOTA DE CREDITO"
+            Case "D"
+                fTypeString = "NOTA DE DEBITO"
+            Case "G"
+                fTypeString = "GUIA DE REMESSA"
+            Case "T"
+                fTypeString = "GUIA DE TRANSPORTE"
+        End Select
+
+        Return fTypeString
+    End Function
 End Class

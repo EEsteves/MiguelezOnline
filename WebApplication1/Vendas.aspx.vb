@@ -42,9 +42,8 @@ Public Class Vendas
             ' Carrega o dropdown de Clientes
             FillClientDropDown()
 
-            mStatus = Mid(ddlStatus.Text, 1, 1)
-
-            LoadVendas()
+            ''''Populate grid control from database values
+            PopulateGridControl()
         End If
 
         mSelectedClient = Mid(ddlCliente.Text, 1, 8)
@@ -113,17 +112,24 @@ Public Class Vendas
         rc = d4close(fFct)
         rc = code4initUndo(cb)
 
-        C1GridView1.DataSource = dataTable1
-        C1GridView1.DataBind()
+        grdVendas.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Número
+        grdVendas.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Cliente
+        grdVendas.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Vendedor
+        grdVendas.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Data     
+        grdVendas.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Sit
+        grdVendas.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor
+
+        grdVendas.DataSource = dataTable1
+        grdVendas.DataBind()
 
         ' Go to last page
-        C1GridView1.PageIndex = C1GridView1.PageCount
+        grdVendas.PageIndex = grdVendas.PageCount
 
         Return True
     End Function
 
-    Private Sub C1GridView1_PageIndexChanging(sender As Object, e As C1GridViewPageEventArgs) Handles C1GridView1.PageIndexChanging
-        C1GridView1.PageIndex = e.NewPageIndex
+    Private Sub C1GridView1_PageIndexChanging(sender As Object, e As C1GridViewPageEventArgs) Handles grdVendas.PageIndexChanging
+        grdVendas.PageIndex = e.NewPageIndex
 
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
@@ -134,7 +140,7 @@ Public Class Vendas
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
         xRow = Request.Form("text1")
-        mDocNum = C1GridView1.Rows(xRow).Cells(0).Text
+        mDocNum = grdVendas.Rows(xRow).Cells(0).Text
 
         If e.Item.Text = "Visualiza" Then
             Dim xStr As String = "~/VendasDetail.aspx?field1=" + Trim(mDocNum)
@@ -232,28 +238,46 @@ Public Class Vendas
     Private Sub ddlStatus_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlStatus.SelectedIndexChanged
         mStatus = Mid(ddlStatus.Text, 1, 1)
 
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadVendas()
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub ddlCliente_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlCliente.SelectedIndexChanged
         mSelectedClient = Mid(ddlCliente.Text, 1, 8)
 
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadVendas()
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub ddlDataPeriod_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlDataYear.SelectedIndexChanged
         mSelectedPeriod = Trim(Mid(ddlDataYear.Text, 1, 1))
 
+        ''''Populate grid control from database values
+        PopulateGridControl()
+    End Sub
+
+    ''' <summary>
+    ''' Populate grid control from database values
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub PopulateGridControl()
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
 
+        ''''Gets sales details from database
         LoadVendas()
+
+        ' Go to last page
+        NavigateGridToLastPage()
+    End Sub
+
+    ''' <summary>
+    ''' Go to last page in the grid
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub NavigateGridToLastPage()
+        grdVendas.PageIndex = grdVendas.PageCount
+        grdVendas.AllowKeyboardNavigation = True
     End Sub
 
     ''' <summary>
@@ -263,6 +287,7 @@ Public Class Vendas
     Private Sub GetDateValues()
         mSelectedPeriod = Mid(ddlDataYear.Text, 1, 1)
         mStatus = Mid(ddlStatus.Text, 1, 1)
+        mSelectedClient = Mid(ddlCliente.Text, 1, 8)
 
         Dim mStartDate As DateTime
         Dim mEndDate As DateTime

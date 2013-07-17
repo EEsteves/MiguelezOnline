@@ -118,8 +118,9 @@
     <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Apollo.Provider">
-      <HintPath>..\..\Apollo.Provider.DLL</HintPath>
+    <Reference Include="Apollo.Provider, Version=7.1.40.5, Culture=neutral, PublicKeyToken=39b788262908a6aa, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\Apollo.Provider.DLL</HintPath>
     </Reference>
     <Reference Include="C1.Web.Wijmo.Controls.4, Version=4.0.20131.101, Culture=neutral, PublicKeyToken=9b75583953471eea, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -153,16 +154,17 @@
     <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="EO.Web">
-      <HintPath>..\..\EO.Web.dll</HintPath>
+    <Reference Include="EO.Web, Version=10.0.43.2, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\EO.Web.dll</HintPath>
     </Reference>
     <Reference Include="Interop.MVXSOCKX_SVRLib">
-      <HintPath>..\..\Interop.MVXSOCKX_SVRLib.dll</HintPath>
+      <HintPath>..\Binaries\Interop.MVXSOCKX_SVRLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\log4net.dll</HintPath>
+      <HintPath>..\Binaries\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.JScript">
       <Private>True</Private>
@@ -582,7 +584,7 @@
           <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties Reactor_Enabled="0" Reactor_Commands="" Reactor_Project="" Reactor_Configuration="ALL" Reactor_Output="" Reactor_Deploy="0" />
+      <UserProperties Reactor_Deploy="0" Reactor_Output="" Reactor_Configuration="ALL" Reactor_Project="" Reactor_Commands="" Reactor_Enabled="0" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

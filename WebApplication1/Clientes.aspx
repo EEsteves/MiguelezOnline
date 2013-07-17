@@ -69,7 +69,7 @@
                                     </td>
                                     <td rowspan="2" align="right" style="padding-right: 6px;">
                                         <asp:Button ID="Button1" runat="server" Text="Mostrar Informação ao Cliente" Height="40px"
-                                            Width="190px" />
+                                            Width="200px" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,7 +82,7 @@
                                         <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
                                     </td>
                                     <td rowspan="2" align="right" style="padding-right: 6px;">
-                                        <asp:Button ID="Button2" runat="server" Text="Mostrar Descontos" Height="40px" Width="190px" />
+                                        <asp:Button ID="Button2" runat="server" Text="Mostrar Descontos" Height="40px" Width="200px" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +98,7 @@
                                     <td align="right" style="padding-right: 6px; width: 190px;">
                                         <br />
                                         Telefone &nbsp; &nbsp; &nbsp;
-                                        <a ID="lnkTelefone" runat="server" />
+                                        <a style="cursor:pointer;" ID="lnkTelefone" runat="server" />
                                     </td>
                                 </tr>
                             </table>

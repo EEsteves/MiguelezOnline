@@ -77,15 +77,6 @@ Partial Public Class Vendas
     Protected WithEvents C1MenuItem5 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
 
     '''<summary>
-    '''C1MenuItem6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents C1MenuItem6 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
-
-    '''<summary>
     '''C1MenuItem7 control.
     '''</summary>
     '''<remarks>
@@ -95,11 +86,11 @@ Partial Public Class Vendas
     Protected WithEvents C1MenuItem7 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
 
     '''<summary>
-    '''C1GridView1 control.
+    '''grdVendas control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents C1GridView1 As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
+    Protected WithEvents grdVendas As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
 End Class

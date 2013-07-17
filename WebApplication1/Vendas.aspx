@@ -79,10 +79,10 @@
                 <Items>
                     <wijmo:C1MenuItem ID="C1MenuItem5" runat="server" DisplayVisible="True" ImagePosition="Left"
                         Text="Visualiza">
-                    </wijmo:C1MenuItem>
+                    </wijmo:C1MenuItem><%--
                     <wijmo:C1MenuItem ID="C1MenuItem6" runat="server" DisplayVisible="True" ImagePosition="Left"
                         Text="Estatísticas">
-                    </wijmo:C1MenuItem>
+                    </wijmo:C1MenuItem>--%>
                     <wijmo:C1MenuItem ID="C1MenuItem7" runat="server" DisplayVisible="True" ImagePosition="Left"
                         Text="Imprime Lista de Documentos">
                     </wijmo:C1MenuItem>
@@ -90,10 +90,27 @@
                     </wijmo:C1MenuItem>
                 </Items>
             </wijmo:C1Menu>
-            <wijmo1:c1gridview id="C1GridView1" runat="server" clientselectionmode="SingleRow"
+            <wijmo1:c1gridview id="grdVendas" runat="server" clientselectionmode="SingleRow"
                 onclientselectionchanged="xSelectionChanged" allowcolmoving="True" allowcolsizing="True"
-                allowpaging="True" allowsorting="True" autogeneratecolumns="True" pagesize="15" cssclass="style11">
+                allowpaging="True" allowsorting="True" autogeneratecolumns="false" pagesize="15">
         <PagerSettings Mode="NextPreviousFirstLast" />
+        <Columns>
+            <wijmo1:C1BoundField DataField="Número" HeaderText="Número" Width="80px" SortExpression="E_CLIENT">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Cliente" HeaderText="Cliente" Width="80px" SortExpression="E_CLIENT">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Nome" HeaderText="Nome" SortExpression="E_NAME">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Sit" HeaderText="Vend">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Vend" HeaderText="Sit">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Data" HeaderText="Data" SortExpression="X_DATE" DataFormatString="d">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="Valor" HeaderText="Valor">
+            </wijmo1:C1BoundField>
+        </Columns>
+        <AlternatingRowStyle BackColor="#E6F2FF" />
         <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
     </wijmo1:c1gridview>
             <p>
@@ -101,7 +118,7 @@
             <!-- Script para retornar o mRow seleccionado pelo cliente sem ir ao Servidor -->
             <script type="text/javascript">
                 function xSelectionChanged() {
-                    var selectedCells = $('#<%= C1GridView1.ClientID %>').c1gridview("selection").selectedCells();
+                    var selectedCells = $('#<%= grdVendas.ClientID %>').c1gridview("selection").selectedCells();
                     var i, cellInfo, mCols, mRow;
                     for (i = 0; i < selectedCells.length(); i++) {
                         mCols = selectedCells.length();

@@ -60,15 +60,15 @@
                         <span class="style9"><strong>Orçamentos</strong></span>
                     </td>
                     <td class="style6">
-                        Situações<wijmo:C1ComboBox ID="C1ComboBox1" runat="server" Width="140px">
+                        Situações<wijmo:C1ComboBox ID="ddlStatus" runat="server" Width="140px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style8">
-                        Cliente<wijmo:C1ComboBox ID="C1ComboBox2" runat="server" Width="400px">
+                        Cliente<wijmo:C1ComboBox ID="ddlCliente" runat="server" Width="400px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                     <td class="style7">
-                        Data (Ano)<wijmo:C1ComboBox ID="C1ComboBox3" runat="server" Width="140px">
+                        Data (Ano)<wijmo:C1ComboBox ID="ddlDataYear" runat="server" Width="140px" AutoPostBack="true">
                         </wijmo:C1ComboBox>
                     </td>
                 </tr>
@@ -84,27 +84,44 @@
                 <Items>
                     <wijmo:C1MenuItem ID="C1MenuItem1" runat="server" Text="Visualiza">
                     </wijmo:C1MenuItem>
-                    <wijmo:C1MenuItem ID="C1MenuItem2" runat="server" Text="Estatisticas">
-                    </wijmo:C1MenuItem>
+                    <%--<wijmo:C1MenuItem ID="C1MenuItem2" runat="server" Text="Estatisticas">
+                    </wijmo:C1MenuItem>--%>
                     <wijmo:C1MenuItem ID="C1MenuItem3" runat="server" Text="Lista Orçamentos">
                     </wijmo:C1MenuItem>
                     <wijmo:C1MenuItem ID="C1MenuItem4" runat="server" StaticKey="sk3" Text="Imprime Documento">
                     </wijmo:C1MenuItem>
                 </Items>
             </wijmo:C1Menu>
-            <wijmo1:c1gridview id="C1GridView1" runat="server" clientselectionmode="SingleRow"
+            <wijmo1:c1gridview id="grdOrcam" runat="server" clientselectionmode="SingleRow"
                 onclientselectionchanged="xSelectionChanged" allowcolmoving="True" allowcolsizing="True"
-                allowpaging="True" allowsorting="True" autogeneratecolumns="True" pagesize="15"
+                allowpaging="True" allowsorting="True" autogeneratecolumns="false" pagesize="15"
                 cssclass="style10">
-        <PagerSettings PageButtonCount="20" />
+        <PagerSettings Mode="NextPreviousFirstLast" />
+        <Columns>
+            <wijmo1:C1BoundField DataField="K_ORCAM" HeaderText="Número" Width="80px" SortExpression="K_ORCAM">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_CLIENT" HeaderText="Cliente" Width="80px" SortExpression="K_CLIENT">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_NAME" HeaderText="Nome" SortExpression="K_NAME">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_AGENTE" HeaderText="Vend">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_STATUS" HeaderText="Sit">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_ORC_DT" HeaderText="Data" SortExpression="K_ORC_DT" DataFormatString="d">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="K_TOTLIQ" HeaderText="Valor">
+            </wijmo1:C1BoundField>
+        </Columns>
+        <AlternatingRowStyle BackColor="#E6F2FF" />
         <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
     </wijmo1:c1gridview>
             <p>
-                <input type="text" id="text1" name="text1" size="5" /></p>
+                <input type="text" id="text1" name="text1" size="5" style="display:none;" /></p>
             <!-- Script para retornar o mRow seleccionado pelo cliente sem ir ao Servidor -->
             <script type="text/javascript">
                 function xSelectionChanged() {
-                    var selectedCells = $('#<%= C1GridView1.ClientID %>').c1gridview("selection").selectedCells();
+                    var selectedCells = $('#<%= grdOrcam.ClientID %>').c1gridview("selection").selectedCells();
                     var i, cellInfo, mCols, mRow;
                     for (i = 0; i < selectedCells.length(); i++) {
                         mCols = selectedCells.length();

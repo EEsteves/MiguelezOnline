@@ -178,6 +178,7 @@ Public Class Clientes
             Label6.Text = reader("C_VEND").ToString
             Label7.Text = reader("C_SIN").ToString
             lblContacto.Text = System.Convert.ToString(reader("C_CONTACT"))
+            lnkTelefone.HRef = "tel:" & System.Convert.ToString(reader("C_PHONE1"))
             lnkTelefone.InnerText = System.Convert.ToString(reader("C_PHONE1"))
             Label9.Text = reader("C_PHONE2").ToString
             lnkEmail.HRef = "mailto:" + Mid(reader("C_PHONE3").ToString.ToLower, 1, 30)

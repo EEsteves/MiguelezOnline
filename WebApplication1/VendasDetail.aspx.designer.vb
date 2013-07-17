@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class VendasDetail
 
     '''<summary>
+    '''progressBar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents progressBar As Global.System.Web.UI.UpdateProgress
+
+    '''<summary>
+    '''uplMainPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''txtSelectedVendas control.
     '''</summary>
     '''<remarks>
@@ -111,6 +129,15 @@ Partial Public Class VendasDetail
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblTotalComIVA As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblTipoDeDocumento control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblTipoDeDocumento As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''lblNome control.

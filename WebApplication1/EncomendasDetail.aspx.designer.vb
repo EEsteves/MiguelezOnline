@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class EncomendasDetail
 
     '''<summary>
+    '''progressBar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents progressBar As Global.System.Web.UI.UpdateProgress
+
+    '''<summary>
+    '''uplMainPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''TextBox1 control.
     '''</summary>
     '''<remarks>

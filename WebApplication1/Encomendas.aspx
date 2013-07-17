@@ -101,9 +101,9 @@
                 </HideAnimation>
                 <Items>
                     <wijmo:C1MenuItem ID="C1MenuItem1" runat="server" Text="Visualiza Encomenda">
-                    </wijmo:C1MenuItem>
+                    </wijmo:C1MenuItem><%--
                     <wijmo:C1MenuItem ID="C1MenuItem2" runat="server" Text="Estatísticas">
-                    </wijmo:C1MenuItem>
+                    </wijmo:C1MenuItem>--%>
                     <wijmo:C1MenuItem ID="C1MenuItem3" runat="server" Text="Imprime Lista de Encomendas">
                     </wijmo:C1MenuItem>
                     <wijmo:C1MenuItem ID="C1MenuItem4" runat="server" Text="Imprime uma Encomenda">
@@ -115,17 +115,17 @@
                 autogeneratecolumns="False" pagesize="15" cssclass="style11">
         <PagerSettings Mode="NextPreviousFirstLast" />
         <Columns>
+            <wijmo1:C1BoundField DataField="E_NUMBER" HeaderText="Numero" SortExpression="E_NUMBER">
+            </wijmo1:C1BoundField>
             <wijmo1:C1BoundField DataField="E_CLIENT" HeaderText="Cliente" Width="80px" SortExpression="E_CLIENT">
             </wijmo1:C1BoundField>
             <wijmo1:C1BoundField DataField="E_NAME" HeaderText="Nome" SortExpression="E_NAME">
             </wijmo1:C1BoundField>
-            <wijmo1:C1BoundField DataField="E_NUMBER" HeaderText="Numero" SortExpression="E_NUMBER">
-            </wijmo1:C1BoundField>
             <wijmo1:C1BoundField DataField="E_VEND" HeaderText="Vend">
             </wijmo1:C1BoundField>
-            <wijmo1:C1BoundField DataField="X_DATE" HeaderText="Data" SortExpression="X_DATE" DataFormatString="d">
-            </wijmo1:C1BoundField>
             <wijmo1:C1BoundField DataField="E_STATUS" HeaderText="Sit">
+            </wijmo1:C1BoundField>
+            <wijmo1:C1BoundField DataField="X_DATE" HeaderText="Data" SortExpression="X_DATE" DataFormatString="d">
             </wijmo1:C1BoundField>
             <wijmo1:C1BoundField DataField="E_ENCNUM" HeaderText="Enc Cliente" SortExpression="E_ENCNUM">
             </wijmo1:C1BoundField>

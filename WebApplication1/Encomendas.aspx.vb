@@ -7,7 +7,7 @@ Imports System.Data.OleDb
 Public Class Encomendas
     Inherits Page
 
-    Private dataTable1 As New DataTable("Orders")
+    Private dtEncomendas As New DataTable("Orders")
     Private mSelectedStatus As String = String.Empty
     Private mSelectedClient As String = String.Empty
     Private mSelectedAgent As String = String.Empty
@@ -22,16 +22,16 @@ Public Class Encomendas
         End If
 
         mSelectedAgent = Session("mAgentOnline")
-        
+
         ' Colunas da Tabela de Encomendas
-        dataTable1.Columns.Add("Cliente")
-        dataTable1.Columns.Add("Nome")
-        dataTable1.Columns.Add("Numero")
-        dataTable1.Columns.Add("Vend")
-        dataTable1.Columns.Add("Data")
-        dataTable1.Columns.Add("Sit")
-        dataTable1.Columns.Add("Encnum")
-        dataTable1.Columns.Add("Valor")
+        dtEncomendas.Columns.Add("Cliente")
+        dtEncomendas.Columns.Add("Nome")
+        dtEncomendas.Columns.Add("Numero")
+        dtEncomendas.Columns.Add("Vend")
+        dtEncomendas.Columns.Add("Data")
+        dtEncomendas.Columns.Add("Sit")
+        dtEncomendas.Columns.Add("Encnum")
+        dtEncomendas.Columns.Add("Valor")
 
         If Not IsPostBack Then
             ' Carrega o dropdown de Clientes
@@ -77,13 +77,8 @@ Public Class Encomendas
             ''''Carrega o dropdown de Datas
             FillDataPeriodDropDown()
 
-            mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
-            
-            ''''Get Start date and end date as per the selected parameter
-            GetDateValues()
-
-            ''''Gets orders from database
-            LoadOrders()
+            ''''Populate grid control from database values
+            PopulateGridControl()
 
             mRow = 0
         End If
@@ -128,25 +123,14 @@ Public Class Encomendas
         Dim dataTable1 As New DataTable
         dataTable1.Load(reader)
 
-        C1Encomendas.Columns(0).Width = 75  ' Cliente
-        C1Encomendas.Columns(1).Width = 345 ' Nome
-        C1Encomendas.Columns(2).Width = 75  ' Numero 
-        C1Encomendas.Columns(3).Width = 55  ' Vendedor
-        C1Encomendas.Columns(4).Width = 80  ' Data
-        C1Encomendas.Columns(5).Width = 40  ' Sit
-        C1Encomendas.Columns(6).Width = 150 ' Enc Num
-        C1Encomendas.Columns(7).Width = 100 ' Valor 
-        C1Encomendas.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Cliente
+        C1Encomendas.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Numero
+        C1Encomendas.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Cliente
         C1Encomendas.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Vendedor
         C1Encomendas.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Data     
         C1Encomendas.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Sit
 
         C1Encomendas.DataSource = dataTable1
         C1Encomendas.DataBind()
-
-        ' Go to last page
-        C1Encomendas.PageIndex = C1Encomendas.PageCount
-        C1Encomendas.AllowKeyboardNavigation = True
 
         reader.Close()
         conn.Close()
@@ -206,28 +190,22 @@ Public Class Encomendas
     Private Sub ddlStatus_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlStatus.SelectedIndexChanged
         mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
 
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadOrders()
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub ddlCliente_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlCliente.SelectedIndexChanged
         mSelectedClient = Mid(ddlCliente.Text, 1, 8)
 
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadOrders()
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub ddlDataPeriod_SelectedIndexChanged(sender As Object, args As C1ComboBoxEventArgs) Handles ddlDataPeriod.SelectedIndexChanged
         mSelectedPeriod = Trim(Mid(ddlDataPeriod.Text, 1, 1))
 
-        ''''Get Start date and end date as per the selected parameter
-        GetDateValues()
-
-        LoadOrders()
+        ''''Populate grid control from database values
+        PopulateGridControl()
     End Sub
 
     Private Sub C1Encomendas_Sorting(sender As Object, e As C1GridViewSortEventArgs) Handles C1Encomendas.Sorting
@@ -244,6 +222,7 @@ Public Class Encomendas
     Private Sub GetDateValues()
         mSelectedPeriod = Mid(ddlDataPeriod.Text, 1, 1)
         mSelectedStatus = Mid(ddlStatus.Text, 1, 1)
+        mSelectedClient = Mid(ddlCliente.Text, 1, 8)
 
         If mSelectedPeriod = String.Empty Or mSelectedPeriod = "9" Then
             mStartDt = "01-01-2000"
@@ -281,5 +260,29 @@ Public Class Encomendas
         ddlDataPeriod.Items.Add(New C1ComboBoxItem("3 - Ultimo Ano"))
         ddlDataPeriod.Items.Add(New C1ComboBoxItem("9 - Todas"))
         ddlDataPeriod.Text = "2 - Ultimo Trimestre"
+    End Sub
+
+    ''' <summary>
+    ''' Populate grid control from database values
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub PopulateGridControl()
+        ''''Get Start date and end date as per the selected parameter
+        GetDateValues()
+
+        ''''Gets orders from database
+        LoadOrders()
+
+        ' Go to last page
+        NavigateGridToLastPage()
+    End Sub
+
+    ''' <summary>
+    ''' Go to last page in the grid
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub NavigateGridToLastPage()
+        C1Encomendas.PageIndex = C1Encomendas.PageCount
+        C1Encomendas.AllowKeyboardNavigation = True
     End Sub
 End Class

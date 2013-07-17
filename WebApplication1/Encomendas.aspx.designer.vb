@@ -77,15 +77,6 @@ Partial Public Class Encomendas
     Protected WithEvents C1MenuItem1 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
 
     '''<summary>
-    '''C1MenuItem2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents C1MenuItem2 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
-
-    '''<summary>
     '''C1MenuItem3 control.
     '''</summary>
     '''<remarks>

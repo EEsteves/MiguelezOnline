@@ -58,49 +58,54 @@
                             <div style="float: left; margin-left: 10px; margin-top: 10px;">
                                 <table>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="2" align="left">
                                             <asp:Label ID="sNome" runat="server" Text="sNome" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="2" align="left">
                                             <asp:Label ID="sContact" runat="server" Text="sContact" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sRef">
                                                 Referência</label>
                                         </td>
-                                        <td>
+                                        <td align="left">
                                             <asp:Label ID="sRef" runat="server" Text="sRef" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sLoc1">
                                                 Local</label>
                                         </td>
-                                        <td>
+                                        <td align="left">
                                             <asp:Label ID="sLoc1" runat="server" Text="sLoc1" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sLoc2">
                                                 Entrega</label>
                                         </td>
-                                        <td>
+                                        <td align="left">
                                             <asp:Label ID="sLoc2" runat="server" Text="sLoc2" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" align="left">
                                             <asp:Label ID="sLoc3" runat="server" Text="sLoc3" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2">
+                                        <td colspan="2" align="left">
                                             <asp:Label ID="sLoc4" runat="server" Text="sLoc4" ForeColor="Blue"></asp:Label>
                                         </td>
                                     </tr>
@@ -109,7 +114,7 @@
                             <div style="float: right; margin-right: 10px; margin-top: 10px; width: 25%">
                                 <table width="80%">
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sVend">
                                                 Vendedor</label>
                                         </td>
@@ -118,7 +123,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sData">
                                                 Data</label>
                                         </td>
@@ -127,7 +132,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sPrevista">
                                                 Previsão</label>
                                         </td>
@@ -136,7 +141,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sPrazo">
                                                 Condições</label>
                                         </td>
@@ -145,7 +150,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sSoma">
                                                 Soma</label>
                                         </td>
@@ -154,7 +159,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sIva">
                                                 Iva</label>
                                         </td>
@@ -163,7 +168,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td align="left">
                                             <label for="sValor">
                                                 Valor</label>
                                         </td>
