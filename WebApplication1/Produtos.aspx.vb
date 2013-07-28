@@ -1,6 +1,5 @@
 ﻿Imports C1.Web.Wijmo.Controls.C1ComboBox
 Imports C1.Web.Wijmo.Controls.C1Menu
-Imports Microsoft.JScript
 Imports MVXSOCKX_SVRLib
 
 Public Class Produtos

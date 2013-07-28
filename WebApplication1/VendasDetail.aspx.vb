@@ -171,7 +171,7 @@ Public Class VendasDetail
         fMov = d4open(cb, fPCFMOV)
 
         Dim product As Integer = d4field(fMov, "A_PRODUCT")
-        'Dim name As String = d4field(fMov, "A_NAME")
+        Dim name As String = d4field(fMov, "A_DESC_1")
         Dim quantity As Integer = d4field(fMov, "A_QUANT")
         Dim unit As Integer = d4field(fMov, "A_UNIT")
         Dim firstDiscount As Decimal = d4field(fMov, "A_DESCT")
@@ -195,7 +195,7 @@ Public Class VendasDetail
             count = count + 1
             row = dtVendasDetails.NewRow()
             row("Produto") = f4long(product)
-            'row("Nome") = f4str(name)
+            row("Nome") = f4str(name)
             row("Quant") = f4number(quantity)
             row("Unit") = f4decimals(unit)
             row("Valor") = f4number(quantity) * f4decimals(unit)

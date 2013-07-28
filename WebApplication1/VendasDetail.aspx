@@ -187,7 +187,7 @@
                     <Columns>
                         <wijmo1:C1BoundField DataField="Produto" HeaderText="Produto">
                         </wijmo1:C1BoundField>
-                        <wijmo1:C1BoundField HeaderText="Nome">
+                        <wijmo1:C1BoundField DataField="Nome" HeaderText="Nome">
                         </wijmo1:C1BoundField>
                         <wijmo1:C1BoundField DataField="Quant" HeaderText="Quant">
                         </wijmo1:C1BoundField>
