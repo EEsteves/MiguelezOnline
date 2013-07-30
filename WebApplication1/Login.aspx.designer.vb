@@ -47,7 +47,16 @@ Partial Public Class Login
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents sPassword As Global.C1.Web.Wijmo.Controls.C1Input.C1InputMask
+    Protected WithEvents sPassword As Global.System.Web.UI.HtmlControls.HtmlInputPassword
+
+    '''<summary>
+    '''sPassword1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sPassword1 As Global.C1.Web.Wijmo.Controls.C1Input.C1InputMask
 
     '''<summary>
     '''Button1 control.

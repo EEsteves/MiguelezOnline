@@ -9,7 +9,7 @@ Public Class Login
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim xOper As String = C1ComboBox1.Text
 
-        Dim xx As String = sPassword.Text
+        Dim xx As String = sPassword.Value
 
         Dim mPassword As String = Mid(xx, 1, 4)
         Dim mOper = Mid(xOper, 1, 2)

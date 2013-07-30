@@ -87,8 +87,11 @@
                 Palavra Passe
             </td>
             <td class="style5">
-                &nbsp;<wijmo:C1InputMask ID="sPassword" runat="server" PromptChar=" " PasswordChar="*" Mask="AAAA">
-                </wijmo:C1InputMask>
+                &nbsp;<input type="password" id="sPassword" runat="server" style="width: 164px; height: 30px;"
+                    class="ui-state-default ui-corner-all" />
+                <%--&nbsp;<wijmo:C1InputMask ID="sPassword1" runat="server" PromptChar=" " PasswordChar="*"
+                    Mask="AAAA">
+                </wijmo:C1InputMask>--%>
             </td>
         </tr>
         <tr>
