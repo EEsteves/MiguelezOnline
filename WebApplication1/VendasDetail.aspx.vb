@@ -51,7 +51,7 @@ Public Class VendasDetail
     End Sub
 
     Private Sub GetNextRecords()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -84,7 +84,7 @@ Public Class VendasDetail
     End Sub
 
     Private Sub GetPreviousRecords()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -115,7 +115,7 @@ Public Class VendasDetail
     End Sub
 
     Private Sub ShowVendasHeader(selectedVendas As String)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -160,7 +160,44 @@ Public Class VendasDetail
         conn.Close()
     End Sub
 
-    Private Function ShowVendasDetails(selectedVendas As String)
+    Private Sub ShowVendasDetails(selectedVendas As String)
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
+        Dim conn As New OleDb.OleDbConnection(connStr)
+        Dim cmd As New OleDb.OleDbCommand()
+        cmd.Connection = conn
+
+        mC0 = "SELECT A_PRODUCT AS Produto, A_DESC_1 AS Nome, A_QUANT AS Quant, FORMAT(A_UNIT,'###,##0.00000') AS Unit, A_QUANT * A_UNIT AS Valor, " & _
+        "FORMAT(A_DESCT + A_DESCT2 + A_DESCT3 + A_DESCT4,'###,##0.00000') AS Descontos, FORMAT(A_IVA, '###,##0.00') AS ValorcomIVA FROM PCFMOV " & _
+        "WHERE A_NUMBER = '" + selectedVendas + "' "
+
+        mC0 = mC0 + "ORDER BY A_NUMBER"
+
+        cmd.CommandText = mC0
+        conn.Open()
+
+        Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
+        Dim dataTable1 As New DataTable
+
+        dataTable1.Load(reader)
+
+        grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Producto
+        grdVendasDetails.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Nome
+        grdVendasDetails.Columns(2).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Quant
+        grdVendasDetails.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Unit
+        grdVendasDetails.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor     
+        grdVendasDetails.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Descontos
+        grdVendasDetails.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor com IVA
+
+        grdVendasDetails.DataSource = dataTable1
+        grdVendasDetails.ScrollMode = C1.Web.Wijmo.Controls.C1GridView.ScrollMode.Vertical
+        grdVendasDetails.DataBind()
+        grdVendasDetails.PageSize = 9
+
+        reader.Close()
+        conn.Close()
+    End Sub
+
+    Private Function ShowVendasDetails1(selectedVendas As String)
         Dim row As DataRow
         Dim expr As String
         Dim relation As Long
@@ -210,8 +247,8 @@ Public Class VendasDetail
         rc = code4initUndo(cb)
 
 
-        grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Producto
-        grdVendasDetails.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Center ' Nome
+        grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Producto
+        grdVendasDetails.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Nome
         grdVendasDetails.Columns(2).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Quant
         grdVendasDetails.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Unit
         grdVendasDetails.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor     

@@ -52,7 +52,7 @@ Public Class Orcam
     End Sub
 
     Function LoadOrcam()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDbConnection(connStr)
         Dim cmd As New OleDbCommand()
         cmd.Connection = conn
@@ -240,10 +240,10 @@ Public Class Orcam
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub FillSituaçõesDropDown()
-        ddlStatus.Items.Add(New C1ComboBoxItem("A - Abertas"))
-        ddlStatus.Items.Add(New C1ComboBoxItem("B - Fechadas"))
-        ddlStatus.Items.Add(New C1ComboBoxItem("C - Todas"))
-        ddlStatus.Text = "A - Abertas"
+        ddlStatus.Items.Add(New C1ComboBoxItem("A - Abertos"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("B - Submetidos"))
+        ddlStatus.Items.Add(New C1ComboBoxItem("C - Fechados"))
+        ddlStatus.Text = "B - Submetidos"
     End Sub
 
     ''' <summary>
@@ -266,11 +266,11 @@ Public Class Orcam
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
 
-        ''''Gets orders from database
-        LoadOrcam()
-
         ' Go to last page
         NavigateGridToLastPage()
+
+        ''''Gets orders from database
+        LoadOrcam()
     End Sub
 
     ''' <summary>
@@ -278,7 +278,7 @@ Public Class Orcam
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub NavigateGridToLastPage()
-        grdOrcam.PageIndex = grdOrcam.PageCount
+        grdOrcam.PageIndex = Int32.MaxValue
         grdOrcam.AllowKeyboardNavigation = True
     End Sub
 End Class

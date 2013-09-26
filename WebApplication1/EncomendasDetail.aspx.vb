@@ -25,12 +25,13 @@
                 mSelectedOrder = "12E05162"
             End If
             TextBox1.Text = mSelectedOrder
-            xShowOrderHeader()
-            xShowOrderDetails()
+
+            ShowOrderHeader()
+            ShowOrderDetails()
         End If
     End Sub
 
-    Private Sub xShowOrderHeader()
+    Private Sub ShowOrderHeader()
         Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
@@ -91,7 +92,7 @@
         conn.Close()
     End Sub
 
-    Private Sub xShowOrderDetails()
+    Private Sub ShowOrderDetails()
         Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
@@ -106,6 +107,7 @@
         Dim dataTable1 As New DataTable
 
         dataTable1.Load(reader)
+
         C1Encomendas.Columns(0).Width = 60  ' Linha
         C1Encomendas.Columns(1).Width = 100 ' Produto
         C1Encomendas.Columns(2).Width = 300 ' Nome
@@ -120,10 +122,12 @@
         C1Encomendas.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Unit
         C1Encomendas.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Valor
         C1Encomendas.Columns(7).ItemStyle.HorizontalAlign = HorizontalAlign.Right  ' Falta  
+
         C1Encomendas.DataSource = dataTable1
         C1Encomendas.ScrollMode = C1.Web.Wijmo.Controls.C1GridView.ScrollMode.Vertical
         C1Encomendas.DataBind()
         C1Encomendas.PageSize = 9
+
         reader.Close()
         conn.Close()
     End Sub
@@ -163,8 +167,9 @@
             Else
                 mSelectedOrder = mNext
                 TextBox1.Text = mSelectedOrder
-                xShowOrderHeader()
-                xShowOrderDetails()
+
+                ShowOrderHeader()
+                ShowOrderDetails()
             End If
         ElseIf e.Item.Text = "Seguinte >" Then
         ' Atenção: este «Seguinte» vai apanhar todos os registos independentemente do critério de selecção
@@ -196,8 +201,9 @@
         Else
             mSelectedOrder = mNext
             TextBox1.Text = mSelectedOrder
-            xShowOrderHeader()
-            xShowOrderDetails()
+
+                ShowOrderHeader()
+                ShowOrderDetails()
         End If
         ElseIf e.Item.Text = "Imprime Encomenda" Then
         'Dim xStr As String = "~/EncomendasPrint.aspx?field1=" + Trim(mOrderNum)

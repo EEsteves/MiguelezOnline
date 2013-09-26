@@ -92,7 +92,7 @@ Public Class Encomendas
     ''' <returns></returns>
     ''' <remarks></remarks>
     Function LoadOrders()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDbConnection(connStr)
         Dim cmd As New OleDbCommand()
         cmd.Connection = conn
@@ -114,7 +114,7 @@ Public Class Encomendas
         End If
 
         mC0 = mC0 + "AND E_DATE BETWEEN CDATE('" + mStartDt + "') AND CDATE('" + mEndDt + "') "
-        ' mC0 = mC0 + "ORDER BY E_DATE"
+        mC0 = mC0 + "ORDER BY E_DATE"
 
         cmd.CommandText = mC0
         conn.Open()
@@ -140,27 +140,30 @@ Public Class Encomendas
 
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
-        xRow = Request.Form("text2")
-        mOrderNum = C1Encomendas.Rows(xRow).Cells(2).Text
 
-        If e.Item.Text = "Visualiza Encomenda" Then
-            Dim xStr As String = "~/EncomendasDetail.aspx?field1=" + Trim(mOrderNum)
-            Response.Redirect(xStr)
-            xMessageEnc("Ainda não está implementado")
-        ElseIf e.Item.Text = "Estatísticas" Then
-            Dim xStr As String = "~/EncomendasStats.aspx?field1=" + Trim(mOrderNum)
-            Response.Redirect(xStr)
-        ElseIf e.Item.Text = "Imprime Lista de Encomendas" Then
-            'Dim xStr As String = "~/EncomendasLista.aspx?field1=" + Trim(mOrderNum)
-            'Response.Redirect(xStr)
-            xMessageEnc("Ainda não está implementado")
-        ElseIf e.Item.Text = "Imprime uma Encomenda" Then
-            'Dim xStr As String = "~/EncomendasPrint.aspx?field1=" + Trim(mOrderNum)
-            'Response.Redirect(xStr)
-            xMessageEnc("Ainda não está implementado")
-        Else
-            ' Substituir esta msgbox
-            xMessageEnc("Opção errada " & e.Item.Text)
+        If Not Request.Form("text2") Is String.Empty Then
+            xRow = Request.Form("text2")
+            mOrderNum = C1Encomendas.Rows(xRow).Cells(2).Text
+
+            If e.Item.Text = "Visualiza Encomenda" Then
+                Dim xStr As String = "~/EncomendasDetail.aspx?field1=" + Trim(mOrderNum)
+                Response.Redirect(xStr)
+                xMessageEnc("Ainda não está implementado")
+            ElseIf e.Item.Text = "Estatísticas" Then
+                Dim xStr As String = "~/EncomendasStats.aspx?field1=" + Trim(mOrderNum)
+                Response.Redirect(xStr)
+            ElseIf e.Item.Text = "Imprime Lista de Encomendas" Then
+                'Dim xStr As String = "~/EncomendasLista.aspx?field1=" + Trim(mOrderNum)
+                'Response.Redirect(xStr)
+                xMessageEnc("Ainda não está implementado")
+            ElseIf e.Item.Text = "Imprime uma Encomenda" Then
+                'Dim xStr As String = "~/EncomendasPrint.aspx?field1=" + Trim(mOrderNum)
+                'Response.Redirect(xStr)
+                xMessageEnc("Ainda não está implementado")
+            Else
+                ' Substituir esta msgbox
+                xMessageEnc("Opção errada " & e.Item.Text)
+            End If
         End If
     End Sub
 
@@ -270,11 +273,11 @@ Public Class Encomendas
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
 
-        ''''Gets orders from database
-        LoadOrders()
-
         ' Go to last page
         NavigateGridToLastPage()
+
+        ''''Gets orders from database
+        LoadOrders()
     End Sub
 
     ''' <summary>
@@ -282,7 +285,7 @@ Public Class Encomendas
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub NavigateGridToLastPage()
-        C1Encomendas.PageIndex = C1Encomendas.PageCount
+        C1Encomendas.PageIndex = Int32.MaxValue
         C1Encomendas.AllowKeyboardNavigation = True
     End Sub
 End Class

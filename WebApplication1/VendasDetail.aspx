@@ -148,7 +148,7 @@
                                                 Tipo de Documento</label>
                                         </td>
                                         <td colspan="2" align="left">
-                                        <asp:Label runat="server" id="lblTipoDeDocumento" ForeColor="Blue" />
+                                            <asp:Label runat="server" ID="lblTipoDeDocumento" ForeColor="Blue" />
                                         </td>
                                     </tr>
                                     <tr>

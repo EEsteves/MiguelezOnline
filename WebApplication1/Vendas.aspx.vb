@@ -264,11 +264,11 @@ Public Class Vendas
         ''''Get Start date and end date as per the selected parameter
         GetDateValues()
 
-        ''''Gets sales details from database
-        LoadVendas()
-
         ' Go to last page
         NavigateGridToLastPage()
+
+        ''''Gets sales details from database
+        LoadVendas()
     End Sub
 
     ''' <summary>
@@ -276,7 +276,7 @@ Public Class Vendas
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub NavigateGridToLastPage()
-        grdVendas.PageIndex = grdVendas.PageCount
+        grdVendas.PageIndex = Int32.MaxValue
         grdVendas.AllowKeyboardNavigation = True
     End Sub
 

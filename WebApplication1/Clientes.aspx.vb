@@ -87,8 +87,9 @@ Public Class Clientes
 
     Function xLoadClientes()
         mSelectedAgent = Session("mAgentOnline")
+        Dim dataSourcePath = "C:\PCFFILES\DATA\"
 
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + dataSourcePath + ";Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
