@@ -82,7 +82,7 @@
                                         <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
                                     </td>
                                     <td rowspan="2" align="right" style="padding-right: 6px;">
-                                        <asp:Button ID="Button2" runat="server" Text="Mostrar Descontos" Height="40px" Width="200px" />
+                                        <asp:Button ID="Button2" runat="server" Visible="false" Text="Mostrar Descontos" Height="40px" Width="200px" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -210,7 +210,7 @@
                                     Prazo Médio
                                 </td>
                                 <td align="right" style="padding-right: 5px;">
-                                    <asp:Label ID="Label10" runat="server" Text="0 dias"></asp:Label>
+                                    <asp:Label ID="lblPrazo" runat="server" Text="0 dias"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -218,7 +218,7 @@
                                     Vendedor
                                 </td>
                                 <td align="right" style="padding-right: 5px;">
-                                    <asp:Label ID="Label6" runat="server" Text="01"></asp:Label>
+                                    <asp:Label ID="lblVendedor" runat="server" Text="01"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -226,7 +226,7 @@
                                     Contribuinte
                                 </td>
                                 <td align="right" style="padding-right: 5px;">
-                                    <asp:Label ID="Label7" runat="server" Text="99999990"></asp:Label>
+                                    <asp:Label ID="lblContribuinte" runat="server" Text="99999990"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -234,7 +234,7 @@
                                     Fax
                                 </td>
                                 <td align="right" style="padding-right: 5px;">
-                                    <asp:Label ID="Label9" runat="server" Text="555 555 555"></asp:Label>
+                                    <asp:Label ID="lblFax" runat="server" Text="555 555 555"></asp:Label>
                                 </td>
                             </tr>
                         </table>

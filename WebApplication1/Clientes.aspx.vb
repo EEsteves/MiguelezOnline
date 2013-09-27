@@ -33,6 +33,7 @@ Public Class Clientes
         dataTable1.Columns.Add("Telefone")
 
         ' Carrega o dropdown de letras para selecção de Clientes
+        C1ComboBox1.Items.Add(New C1ComboBoxItem("None"))
         C1ComboBox1.Items.Add(New C1ComboBoxItem("A"))
         C1ComboBox1.Items.Add(New C1ComboBoxItem("B"))
         C1ComboBox1.Items.Add(New C1ComboBoxItem("C"))
@@ -60,7 +61,7 @@ Public Class Clientes
         C1ComboBox1.Items.Add(New C1ComboBoxItem("Y"))
         C1ComboBox1.Items.Add(New C1ComboBoxItem("Z"))
 
-        If IsPostBack = False Then
+        If Not IsPostBack Then
             xLoadClientes()
             mRow = 0
         End If
@@ -70,11 +71,11 @@ Public Class Clientes
         Label3.Text = ""
         Label4.Text = ""
         Label5.Text = ""
-        Label6.Text = ""
-        Label7.Text = ""
+        lblVendedor.Text = ""
+        lblContribuinte.Text = ""
         lnkTelefone.InnerText = ""
-        Label9.Text = ""
-        Label10.Text = ""
+        lblFax.Text = ""
+        lblPrazo.Text = ""
         lnkEmail.InnerText = ""
     End Sub
 
@@ -93,6 +94,10 @@ Public Class Clientes
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
+
+        If (mSelectedLetter = "None") Then
+            mSelectedLetter = String.Empty
+        End If
 
         mC0 = "SELECT C_CLIENT, C_NAME, C_PHONE1, C_VEND FROM PCFCLI "
         mC1 = "C_NAME LIKE '[" + mSelectedLetter + "]%' "
@@ -129,12 +134,15 @@ Public Class Clientes
 
     Private Sub C1ComboBox1_SelectedIndexChanged(sender As Object, args As C1.Web.Wijmo.Controls.C1ComboBox.C1ComboBoxEventArgs) Handles C1ComboBox1.SelectedIndexChanged
         mSelectedLetter = C1ComboBox1.Text
+
+        ClearControls()
+
         xLoadClientes()
         mSelectedClient = ""
     End Sub
 
     Function xShowClientData(mSelectedClient)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -176,12 +184,12 @@ Public Class Clientes
                 End If
             End If
 
-            Label6.Text = reader("C_VEND").ToString
-            Label7.Text = reader("C_SIN").ToString
+            lblVendedor.Text = reader("C_VEND").ToString
+            lblContribuinte.Text = reader("C_SIN").ToString
             lblContacto.Text = System.Convert.ToString(reader("C_CONTACT"))
             lnkTelefone.HRef = "tel:" & System.Convert.ToString(reader("C_PHONE1"))
             lnkTelefone.InnerText = System.Convert.ToString(reader("C_PHONE1"))
-            Label9.Text = reader("C_PHONE2").ToString
+            lblFax.Text = reader("C_PHONE2").ToString
             lnkEmail.HRef = "mailto:" + Mid(reader("C_PHONE3").ToString.ToLower, 1, 30)
             lnkEmail.InnerText = "Email: " & Mid(reader("C_PHONE3").ToString.ToLower, 1, 30)
             zPlafond2 = CDbl(reader("C_PLAFOND2").ToString)
@@ -210,7 +218,8 @@ Public Class Clientes
     Public Sub xComprasUltAno(mSelectedClient)
         Dim xStartDate As Date = DateAdd(DateInterval.Year, -1, Today)
         Dim xEndDate As Date = Today
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -252,7 +261,7 @@ Public Class Clientes
     ' -----------------------------
     Public Sub xInvoiced(mSelectedClient)
         Dim xEndDate As Date = Today
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -392,7 +401,7 @@ Public Class Clientes
             xAverage = LTrim(CStr(Int(mGapTotal / mNumeroFacturas))) & " dias"
         End If
 
-        Label10.Text = xAverage
+        lblPrazo.Text = xAverage
         xTotNaoVencido = Format(zTotNaoVencido, "###,##0.00")
         xTotNaoVencido2 = Format(zTotNaoVencido2, "###,##0.00")
         xTotAtrazado = Format(zTotAtrazado, "###,##0.00")
@@ -409,7 +418,7 @@ Public Class Clientes
     Sub xReceivables(mSelectedClient)
         ' NÃO ESTÁ A SER USADO - SÓ PPROCESSA PRE-DATADOS
         ' ===============================================
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -467,7 +476,7 @@ Public Class Clientes
     End Sub
 
     Public Sub xCalcLetras(mSelectedClient)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -517,7 +526,7 @@ Public Class Clientes
     ' Guias Pendentes é com IVA
     ' -------------------------
     Sub xGuiasPendentes(mSelectedClient)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -546,7 +555,7 @@ Public Class Clientes
     ' Encomendas Pendentes é com IVA
     ' ------------------------------
     Public Sub xPendingOrders(mSelectedClient)
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -629,4 +638,22 @@ Public Class Clientes
         End If
         Return ""
     End Function
+
+    Private Sub ClearControls()
+        sPlafond.Text = "0.00"
+        sPlafInt.Text = "0.00"
+        sPlafTot.Text = "0.00"
+        sSaldoCorr.Text = "0.00"
+        sSaldoAtrz.Text = "0.00"
+        sGuiasPorFact.Text = "0.00"
+        sLetras.Text = "0.00"
+        sCredDisp.Text = "0.00"
+        sEncPend.Text = "0.00"
+        sUltAno.Text = "0.00"
+        lblPrazo.Text = String.Empty
+        lblVendedor.Text = String.Empty
+        lblContribuinte.Text = String.Empty
+        lblFax.Text = String.Empty
+        lblContacto.Text = String.Empty
+    End Sub
 End Class
