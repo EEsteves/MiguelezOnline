@@ -143,7 +143,7 @@ Public Class Encomendas
 
         If Not Request.Form("text2") Is String.Empty Then
             xRow = Request.Form("text2")
-            mOrderNum = C1Encomendas.Rows(xRow).Cells(2).Text
+            mOrderNum = C1Encomendas.Rows(xRow).Cells(0).Text
 
             If e.Item.Text = "Visualiza Encomenda" Then
                 Dim xStr As String = "~/EncomendasDetail.aspx?field1=" + Trim(mOrderNum)

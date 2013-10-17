@@ -53,7 +53,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="rounded_corners" style="width: 100%; height: 150px; padding-top: 10px;"
+                        <div class="rounded_corners" style="width: 100%; height: 170px; padding-top: 10px;"
                             align="center">
                             <div style="float: left; margin-left: 10px; margin-top: 10px;">
                                 <table>
@@ -184,7 +184,7 @@
                 <tr>
                     <td>
                         <wijmo1:c1gridview id="C1Encomendas" runat="server" clientselectionmode="SingleRow"
-                            autogeneratecolumns="False" pagesize="9" height="161px">
+                            autogeneratecolumns="False" pagesize="9" height="170px">
                     <PagerSettings Visible="False" />
                     <Columns>
                         <wijmo1:C1BoundField DataField="I_LINHA" HeaderText="Lin">

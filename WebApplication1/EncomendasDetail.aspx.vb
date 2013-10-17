@@ -32,7 +32,7 @@
     End Sub
 
     Private Sub ShowOrderHeader()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -93,7 +93,7 @@
     End Sub
 
     Private Sub ShowOrderDetails()
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
@@ -139,7 +139,7 @@
         If e.Item.Text = "< Anterior" Then
             ' Atenção: este «Anterior» vai apanhar todos os registos independentemente do critério de selecção
             ' indicado no ecrã anterior
-            Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+            Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
             Dim conn As New OleDb.OleDbConnection(connStr)
             Dim cmd As New OleDb.OleDbCommand()
             cmd.Connection = conn
@@ -174,7 +174,7 @@
         ElseIf e.Item.Text = "Seguinte >" Then
         ' Atenção: este «Seguinte» vai apanhar todos os registos independentemente do critério de selecção
         ' indicado no ecrã anterior
-        Dim connStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
+            Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
         Dim conn As New OleDb.OleDbConnection(connStr)
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
