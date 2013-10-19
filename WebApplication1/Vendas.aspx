@@ -114,19 +114,27 @@
         <SelectedRowStyle BackColor="#99CCFF" ForeColor="Red" />
     </wijmo1:c1gridview>
             <p>
-                <input type="text" id="text1" style="display:none;" name="text1" size="5" /></p>
+                <input type="text" id="text1" style="display:none;" name="text1" size="5" />
+                <input type="text" id="text2" name="text2" size="5" style="display:none" />
+                </p>
             <!-- Script para retornar o mRow seleccionado pelo cliente sem ir ao Servidor -->
             <script type="text/javascript">
                 function xSelectionChanged() {
-                    var selectedCells = $('#<%= grdVendas.ClientID %>').c1gridview("selection").selectedCells();
-                    var i, cellInfo, mCols, mRow;
-                    for (i = 0; i < selectedCells.length(); i++) {
-                        mCols = selectedCells.length();
-                        cellInfo = selectedCells.item(i);
-                        mRow = cellInfo.rowIndex();
-                        document.getElementById('text1').value = mRow
-                    }
+                    var mCod = $('#<%= grdVendas.ClientID %>').c1gridview("currentCell").row().data[2];
+                    var mRow = $('#<%= grdVendas.ClientID %>').c1gridview("currentCell").rowIndex();
+                    document.getElementById('text1').value = mCod;
+                    document.getElementById('text2').value = mRow;
                 }
+//                function xSelectionChanged() {
+//                    var selectedCells = $('#<%= grdVendas.ClientID %>').c1gridview("selection").selectedCells();
+//                    var i, cellInfo, mCols, mRow;
+//                    for (i = 0; i < selectedCells.length(); i++) {
+//                        mCols = selectedCells.length();
+//                        cellInfo = selectedCells.item(i);
+//                        mRow = cellInfo.rowIndex();
+//                        document.getElementById('text1').value = mRow
+//                    }
+//                }
             </script>
         </ContentTemplate>
     </asp:UpdatePanel>

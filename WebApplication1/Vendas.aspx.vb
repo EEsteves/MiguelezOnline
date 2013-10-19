@@ -122,9 +122,6 @@ Public Class Vendas
         grdVendas.DataSource = dataTable1
         grdVendas.DataBind()
 
-        ' Go to last page
-        grdVendas.PageIndex = grdVendas.PageCount
-
         Return True
     End Function
 
@@ -139,7 +136,7 @@ Public Class Vendas
 
     Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
-        xRow = Request.Form("text1")
+        xRow = Request.Form("text2")
         mDocNum = grdVendas.Rows(xRow).Cells(0).Text
 
         If e.Item.Text = "Visualiza" Then

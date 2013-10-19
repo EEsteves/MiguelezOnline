@@ -166,10 +166,10 @@ Public Class VendasDetail
         Dim cmd As New OleDb.OleDbCommand()
         cmd.Connection = conn
 
-        mC0 = "SELECT A_PRODUCT AS Produto, A_DESC_1 AS Nome, A_QUANT AS Quant, FORMAT(A_UNIT,'###,##0.00000') AS Unit, A_QUANT * A_UNIT AS Valor, " & _
-        "FORMAT(A_DESCT + A_DESCT2 + A_DESCT3 + A_DESCT4,'###,##0.00000') AS Descontos, FORMAT(A_IVA, '###,##0.00') AS ValorcomIVA FROM PCFMOV " & _
-        "WHERE A_NUMBER = '" + selectedVendas + "' "
+        mC0 = "SELECT A_PRODUCT AS Produto, A_DESC_1 AS Nome, A_QUANT AS Quant, FORMAT(A_UNIT,'###,##0.00') AS Unit, A_QUANT * A_UNIT AS Valor, " & _
+        "FORMAT(A_DESCT + A_DESCT2 + A_DESCT3 + A_DESCT4,'###,##0.00') AS Descontos, FORMAT(A_IVA, '###,##0.00') AS ValorcomIVA FROM PCFMOV "
 
+        mC0 += "WHERE A_NUMBER = '" + selectedVendas + "' "
         mC0 = mC0 + "ORDER BY A_NUMBER"
 
         cmd.CommandText = mC0
