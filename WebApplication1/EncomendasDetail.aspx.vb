@@ -1,5 +1,7 @@
-﻿Public Class EncomendasDetail
-    Inherits System.Web.UI.Page
+﻿Imports C1.Web.Wijmo.Controls.C1Menu
+
+Public Class EncomendasDetail
+    Inherits Page
 
     Private mSelectedOrder As String = ""
     Private mSelectedAgent As String = ""
@@ -132,7 +134,7 @@
         conn.Close()
     End Sub
 
-    Private Sub C1Menu1_ItemClick(sender As Object, e As C1.Web.Wijmo.Controls.C1Menu.C1MenuEventArgs) Handles C1Menu1.ItemClick
+    Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim mNext As String = String.Empty
         Dim mOrderDate As String = String.Empty
 
@@ -145,7 +147,7 @@
             cmd.Connection = conn
             mSelectedOrder = TextBox1.Text
 
-            mC0 = "SELECT TOP 1 E_NUMBER, E_DATE FROM PCFECL WHERE E_NUMBER <'" + mSelectedOrder + "' "
+            mC0 = "SELECT TOP 1 E_NUMBER, E_DATE FROM PCFECL WHERE E_NUMBER < '" + mSelectedOrder + "' "
             If Len(Trim(mSelectedAgent)) > 0 Then
                 mC0 = mC0 + "AND E_VEND = '" + mSelectedAgent + "' "
             End If
@@ -172,46 +174,46 @@
                 ShowOrderDetails()
             End If
         ElseIf e.Item.Text = "Seguinte >" Then
-        ' Atenção: este «Seguinte» vai apanhar todos os registos independentemente do critério de selecção
-        ' indicado no ecrã anterior
+            ' Atenção: este «Seguinte» vai apanhar todos os registos independentemente do critério de selecção
+            ' indicado no ecrã anterior
             Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=dBase 5.0"
-        Dim conn As New OleDb.OleDbConnection(connStr)
-        Dim cmd As New OleDb.OleDbCommand()
-        cmd.Connection = conn
-        mSelectedOrder = TextBox1.Text
-        mC0 = "SELECT TOP 1 E_NUMBER, E_DATE FROM PCFECL WHERE E_NUMBER > '" + mSelectedOrder + "' "
+            Dim conn As New OleDb.OleDbConnection(connStr)
+            Dim cmd As New OleDb.OleDbCommand()
+            cmd.Connection = conn
+            mSelectedOrder = TextBox1.Text
+            mC0 = "SELECT TOP 1 E_NUMBER, E_DATE FROM PCFECL WHERE E_NUMBER > '" + mSelectedOrder + "' "
 
-        If Len(Trim(mSelectedAgent)) > 0 Then
-            mC0 = mC0 + "AND E_VEND = '" + mSelectedAgent + "' "
-        End If
+            If Len(Trim(mSelectedAgent)) > 0 Then
+                mC0 = mC0 + "AND E_VEND = '" + mSelectedAgent + "' "
+            End If
 
-        mC0 = mC0 + "ORDER BY E_NUMBER"
-        cmd.CommandText = mC0
-        conn.Open()
+            mC0 = mC0 + "ORDER BY E_NUMBER"
+            cmd.CommandText = mC0
+            conn.Open()
 
-        Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
-        reader.Read()
-        mNext = reader("E_NUMBER").ToString
-        mOrderDate = Mid(reader("E_DATE").ToString, 1, 10)
-        reader.Close()
-        conn.Close()
+            Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
+            reader.Read()
+            mNext = reader("E_NUMBER").ToString
+            mOrderDate = Mid(reader("E_DATE").ToString, 1, 10)
+            reader.Close()
+            conn.Close()
 
-        If CDate(mOrderDate) < CDate(sData.Text) Then
-            xMessageEnc("Fim do Ficheiro")
-        Else
-            mSelectedOrder = mNext
-            TextBox1.Text = mSelectedOrder
+            If CDate(mOrderDate) < CDate(sData.Text) Then
+                xMessageEnc("Fim do Ficheiro")
+            Else
+                mSelectedOrder = mNext
+                TextBox1.Text = mSelectedOrder
 
                 ShowOrderHeader()
                 ShowOrderDetails()
-        End If
+            End If
         ElseIf e.Item.Text = "Imprime Encomenda" Then
-        'Dim xStr As String = "~/EncomendasPrint.aspx?field1=" + Trim(mOrderNum)
-        'Response.Redirect(xStr)
-        xMessageEnc("Ainda não está implementado")
+            'Dim xStr As String = "~/EncomendasPrint.aspx?field1=" + Trim(mOrderNum)
+            'Response.Redirect(xStr)
+            xMessageEnc("Ainda não está implementado")
         Else
-        ' Substituir esta msgbox
-        xMessageEnc("Opção errada " & e.Item.Text)
+            ' Substituir esta msgbox
+            xMessageEnc("Opção errada " & e.Item.Text)
         End If
     End Sub
 

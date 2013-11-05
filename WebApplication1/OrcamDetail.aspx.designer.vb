@@ -12,4 +12,202 @@ Option Explicit On
 
 
 Partial Public Class OrçamentosDetail
+
+    '''<summary>
+    '''progressBar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents progressBar As Global.System.Web.UI.UpdateProgress
+
+    '''<summary>
+    '''uplMainPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''TextBox1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''C1Menu1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents C1Menu1 As Global.C1.Web.Wijmo.Controls.C1Menu.C1Menu
+
+    '''<summary>
+    '''C1MenuItem1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents C1MenuItem1 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
+
+    '''<summary>
+    '''C1MenuItem2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents C1MenuItem2 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
+
+    '''<summary>
+    '''C1MenuItem3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents C1MenuItem3 As Global.C1.Web.Wijmo.Controls.C1Menu.C1MenuItem
+
+    '''<summary>
+    '''sNome control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sNome As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sContact control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sContact As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sRef control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sRef As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sLoc1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sLoc1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sLoc2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sLoc2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sLoc3 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sLoc3 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sLoc4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sLoc4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sVend control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sVend As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sData control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sData As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''lblValidade control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblValidade As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sPrazo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sPrazo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sSoma control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sSoma As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sIva control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sIva As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''sValor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents sValor As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''C1Encomendas control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents C1Encomendas As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
 End Class

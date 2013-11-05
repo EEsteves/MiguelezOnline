@@ -1,7 +1,8 @@
 ﻿Imports C1.Web.Wijmo.Controls.C1GridView
+Imports System.Data.OleDb
 
 Public Class VendasDetail
-    Inherits System.Web.UI.Page
+    Inherits Page
 
     Dim selectedVendas As String = String.Empty
     Dim dtVendasDetails As New DataTable("Facturas")
@@ -160,44 +161,7 @@ Public Class VendasDetail
         conn.Close()
     End Sub
 
-    Private Sub ShowVendasDetails(selectedVendas As String)
-        Dim connStr As String = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source='C:\PCFFILES\DATA\';Extended Properties=""dBase 5.0;HDR=Yes;IMEX=1"""
-        Dim conn As New OleDb.OleDbConnection(connStr)
-        Dim cmd As New OleDb.OleDbCommand()
-        cmd.Connection = conn
-
-        mC0 = "SELECT A_PRODUCT AS Produto, A_DESC_1 AS Nome, A_QUANT AS Quant, FORMAT(A_UNIT,'###,##0.00') AS Unit, A_QUANT * A_UNIT AS Valor, " & _
-        "FORMAT(A_DESCT + A_DESCT2 + A_DESCT3 + A_DESCT4,'###,##0.00') AS Descontos, FORMAT(A_IVA, '###,##0.00') AS ValorcomIVA FROM PCFMOV "
-
-        mC0 += "WHERE A_NUMBER = '" + selectedVendas + "' "
-        mC0 = mC0 + "ORDER BY A_NUMBER"
-
-        cmd.CommandText = mC0
-        conn.Open()
-
-        Dim reader As OleDb.OleDbDataReader = cmd.ExecuteReader
-        Dim dataTable1 As New DataTable
-
-        dataTable1.Load(reader)
-
-        grdVendasDetails.Columns(0).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Producto
-        grdVendasDetails.Columns(1).ItemStyle.HorizontalAlign = HorizontalAlign.Left ' Nome
-        grdVendasDetails.Columns(2).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Quant
-        grdVendasDetails.Columns(3).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Unit
-        grdVendasDetails.Columns(4).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor     
-        grdVendasDetails.Columns(5).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Descontos
-        grdVendasDetails.Columns(6).ItemStyle.HorizontalAlign = HorizontalAlign.Right ' Valor com IVA
-
-        grdVendasDetails.DataSource = dataTable1
-        grdVendasDetails.ScrollMode = C1.Web.Wijmo.Controls.C1GridView.ScrollMode.Vertical
-        grdVendasDetails.DataBind()
-        grdVendasDetails.PageSize = 9
-
-        reader.Close()
-        conn.Close()
-    End Sub
-
-    Private Function ShowVendasDetails1(selectedVendas As String)
+    Private Function ShowVendasDetails(selectedVendas As String)
         Dim row As DataRow
         Dim expr As String
         Dim relation As Long
@@ -208,13 +172,14 @@ Public Class VendasDetail
         fMov = d4open(cb, fPCFMOV)
 
         Dim product As Integer = d4field(fMov, "A_PRODUCT")
+        Dim number As String = d4field(fMov, "A_NUMBER")
         Dim name As String = d4field(fMov, "A_DESC_1")
         Dim quantity As Integer = d4field(fMov, "A_QUANT")
         Dim unit As Integer = d4field(fMov, "A_UNIT")
-        Dim firstDiscount As Decimal = d4field(fMov, "A_DESCT")
-        Dim secondDiscount As Decimal = d4field(fMov, "A_DESCT2")
-        Dim thirdDiscount As Decimal = d4field(fMov, "A_DESCT3")
-        Dim fourthDiscount As Decimal = d4field(fMov, "A_DESCT4")
+        Dim firstDiscount As Integer = d4field(fMov, "A_DESCT")
+        Dim secondDiscount As Integer = d4field(fMov, "A_DESCT2")
+        Dim thirdDiscount As Integer = d4field(fMov, "A_DESCT3")
+        Dim fourthDiscount As Integer = d4field(fMov, "A_DESCT4")
         Dim fVat As Integer = d4field(fMov, "A_IVA")
         relation = relate4init(fMov)
 
@@ -228,21 +193,22 @@ Public Class VendasDetail
         rc = relate4top(relation)
 
         Dim count As Integer = 0
+
         Do While rc = r4success
             count = count + 1
             row = dtVendasDetails.NewRow()
             row("Produto") = f4long(product)
             row("Nome") = f4str(name)
-            row("Quant") = f4number(quantity)
-            row("Unit") = f4decimals(unit)
-            row("Valor") = f4number(quantity) * f4decimals(unit)
-            row("Descontos") = Format(f4number(firstDiscount) + f4number(secondDiscount) + f4number(thirdDiscount) + f4number(fourthDiscount), "###,##0.00")
-            row("ValorcomIVA") = Format(f4number(fVat), "###,##0.00")
+            row("Quant") = f4double(quantity)
+            row("Unit") = f4double(unit)
+            row("Valor") = f4double(quantity) * f4double(unit)
+            row("Descontos") = Format(f4double(firstDiscount) + f4double(secondDiscount) + f4double(thirdDiscount) + f4double(fourthDiscount), "###,##0.00")
+            row("ValorcomIVA") = Format(f4double(fVat), "###,##0.00")
             dtVendasDetails.Rows.Add(row)
             rc = relate4skip(relation, 1)
         Loop
 
-        rc = relate4free(relation, 0)
+        'rc = relate4free(relation, 0)
         rc = d4close(fMov)
         rc = code4initUndo(cb)
 

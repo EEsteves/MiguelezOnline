@@ -73,7 +73,7 @@
                     </td>
                 </tr>
             </table>
-            <wijmo:C1Menu ID="C1Menu1" runat="server" CrumbDefaultText="CrumbDefaultDafaultText">
+            <wijmo:C1Menu ID="C1Menu1" runat="server" CrumbDefaultText="CrumbDefaultDafaultText" AutoPostBack="true">
                 <Animation Option="">
                 </Animation>
                 <ShowAnimation Option="">
@@ -121,14 +121,19 @@
             <!-- Script para retornar o mRow seleccionado pelo cliente sem ir ao Servidor -->
             <script type="text/javascript">
                 function xSelectionChanged() {
-                    var selectedCells = $('#<%= grdOrcam.ClientID %>').c1gridview("selection").selectedCells();
-                    var i, cellInfo, mCols, mRow;
-                    for (i = 0; i < selectedCells.length(); i++) {
-                        mCols = selectedCells.length();
-                        cellInfo = selectedCells.item(i);
-                        mRow = cellInfo.rowIndex();
-                        document.getElementById('text1').value = mRow
-                    }
+                    var mCod = $('#<%= grdOrcam.ClientID %>').c1gridview("currentCell").row().data[0];
+                    var mRow = $('#<%= grdOrcam.ClientID %>').c1gridview("currentCell").rowIndex();
+                    document.getElementById('text1').value = mRow;
+                    //document.getElementById('text2').value = mRow;
+
+//                    var selectedCells = $('#<%= grdOrcam.ClientID %>').c1gridview("selection").selectedCells();
+//                    var i, cellInfo, mCols, mRow;
+//                    for (i = 0; i < selectedCells.length(); i++) {
+//                        mCols = selectedCells.length();
+//                        cellInfo = selectedCells.item(i);
+//                        mRow = cellInfo.rowIndex();
+//                        document.getElementById('text1').value = mRow
+//                    }
                 }
             </script>
         </ContentTemplate>

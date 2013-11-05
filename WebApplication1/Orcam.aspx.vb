@@ -1,7 +1,7 @@
-﻿Imports Microsoft.JScript
-Imports C1.Web.Wijmo.Controls.C1ComboBox
+﻿Imports C1.Web.Wijmo.Controls.C1ComboBox
 Imports System.Data.OleDb
 Imports C1.Web.Wijmo.Controls.C1GridView
+Imports C1.Web.Wijmo.Controls.C1Menu
 
 Public Class Orcam
     Inherits System.Web.UI.Page
@@ -127,14 +127,14 @@ Public Class Orcam
         PopulateGridControl()
     End Sub
 
-    Private Sub C1Menu1_ItemClick(sender As Object, e As C1.Web.Wijmo.Controls.C1Menu.C1MenuEventArgs) Handles C1Menu1.ItemClick
+    Private Sub C1Menu1_ItemClick(sender As Object, e As C1MenuEventArgs) Handles C1Menu1.ItemClick
         Dim xRow As Integer
         xRow = Request.Form("text1")
-        mProdNum = grdOrcam.Rows(xRow).Cells(1).Text
+        mCliNum = grdOrcam.Rows(xRow).Cells(0).Text
 
         If e.Item.Text = "Visualiza" Then
-            'Dim xStr As String = "~/ClientesDetail.aspx?field1=" + Trim(mCliNum)
-            'Response.Redirect(xStr)
+            Dim xStr As String = "~/OrcamDetail.aspx?field1=" + Trim(mCliNum)
+            Response.Redirect(xStr)
             xMessageOrc("Ainda não está implementado")
         ElseIf e.Item.Text = "Estatísticas" Then
             'Dim xStr As String = "~/ClientesStats.aspx?field1=" + Trim(mCliNum)
