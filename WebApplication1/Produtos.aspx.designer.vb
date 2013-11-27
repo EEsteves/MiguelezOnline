@@ -14,6 +14,24 @@ Option Explicit On
 Partial Public Class Produtos
 
     '''<summary>
+    '''progressBar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents progressBar As Global.System.Web.UI.UpdateProgress
+
+    '''<summary>
+    '''uplMainPanel control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents uplMainPanel As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
     '''C1ComboBox1 control.
     '''</summary>
     '''<remarks>
@@ -32,15 +50,6 @@ Partial Public Class Produtos
     Protected WithEvents C1Prods As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
 
     '''<summary>
-    '''Image1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Image1 As Global.System.Web.UI.WebControls.Image
-
-    '''<summary>
     '''C1Stocks control.
     '''</summary>
     '''<remarks>
@@ -48,15 +57,6 @@ Partial Public Class Produtos
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents C1Stocks As Global.C1.Web.Wijmo.Controls.C1GridView.C1GridView
-
-    '''<summary>
-    '''Image2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Image2 As Global.System.Web.UI.WebControls.Image
 
     '''<summary>
     '''C1Fabrica control.

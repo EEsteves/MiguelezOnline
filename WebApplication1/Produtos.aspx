@@ -82,19 +82,22 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="uplMainPanel" UpdateMode="Conditional" runat="server">
         <ContentTemplate>
-            <span class="style8">&nbsp;&nbsp; Stocks&nbsp;&nbsp;</span><span class="style7">&nbsp;</span>&nbsp
-            <wijmo:C1ComboBox ID="C1ComboBox1" runat="server" AutoPostBack="True" MinLength="1"
-                Width="200px" Delay="0" Style="font-size: small" AutoFilter="False" DropdownHeight="350"
-                ForceSelectionText="True" SelectElementWidthFix="12">
-            </wijmo:C1ComboBox>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; <strong>
-                <input type="text" id="text3" name="text3" size="5" hidden="hidden" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" id="text1" name="text1" size="5" hidden="hidden" /></strong><br />
-            <table class="style9" style="border-style: none; border-color: #FFFFFF;">
+            <table width="910px;">
                 <tr>
-                    <td class="style4" colspan="3" style="border-style: none; border-color: #FFFFFF;">
-                        <strong>
+                    <td colspan="2">
+                        <span class="style8">&nbsp;Stocks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><wijmo:C1ComboBox
+                            ID="C1ComboBox1" runat="server" AutoPostBack="True" MinLength="1" Width="200px"
+                            Delay="0" Style="font-size: small" AutoFilter="False" DropdownHeight="350" ForceSelectionText="True"
+                            SelectElementWidthFix="12">
+                        </wijmo:C1ComboBox>
+                        <input type="text" id="text3" name="text3" size="5" hidden="hidden" /><input type="text"
+                            id="text1" name="text1" size="5" hidden="hidden" />
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" align="left">
+                        <div class="rounded_corners" style="width: 580px; height: 500px; padding-top: 10px;"
+                            align="left">
                             <wijmo1:c1gridview id="C1Prods" runat="server" style="top: 0px; left: 1px; font-size: small;"
                                 autogeneratecolumns="False" height="290px" pagesize="20" allowkeyboardnavigation="True"
                                 clientselectionmode="SingleRow" allowautosort="False" onclientselectionchanged="xProductSelectionChanged"
@@ -110,16 +113,70 @@
                             </wijmo1:C1BoundField>
                         </Columns>
                     </wijmo1:c1gridview>
-                        </strong>
+                            <br />
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label2" runat="server" Text="Produto" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="sSelectedProduct" runat="server" Width="111px" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label1" runat="server" Text="Nome" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="sSelectedName" runat="server" Width="227px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label3" runat="server" Text="Total em Portugal (n/Resv)" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TextBox2" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label4" runat="server" Text="Total na Fábrica" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TextBox3" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Label5" runat="server" Text="Total Combinado" />
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TextBox4" runat="server" Width="65px"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <asp:Button ID="btnStocks" runat="server" Height="32px" Text="Stocks" Width="84px"
+                                            Style="text-align: center" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
-                    <td class="style3" rowspan="2" style="border-style: none; border-color: #FFFFFF">
-                        <strong style="font-size: small">
-                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagens/portugal_flag.gif" Style="text-align: left"
-                                CssClass="style12" Height="29px" Width="40px" />
-                            <span class="style12">&nbsp;</span></strong><span class="style12"><span class="style8"><strong>Portugal</strong></span></span><strong
-                                style="font-size: small"><wijmo1:c1gridview id="C1Stocks" runat="server" style="top: 0px;
-                                    left: 3px; font-size: small;" autogeneratecolumns="False" height="180px" width="340px"
-                                    scrollmode="Vertical">
+                    <td valign="top" align="right">
+                        <table width="300px;" height="245;" border="0px" class="rounded_corners">
+                            <tr>
+                                <th style="background-color: #4b6c9e; height: 30px; color: White;">
+                                    Portugal
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <wijmo1:c1gridview id="C1Stocks" runat="server" style="top: 0px; left: 3px; font-size: small;"
+                                        autogeneratecolumns="False" height="180px" width="340px" scrollmode="Vertical">
                             <Columns>
                                 <wijmo1:C1BoundField DataField="Tipo" Width="80px" HeaderText="Embala">
                                 </wijmo1:C1BoundField>
@@ -131,13 +188,20 @@
                                 </wijmo1:C1BoundField>
                             </Columns>
                         </wijmo1:c1gridview>
-                            </strong><strong><span class="style8">
-                                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagens/spain_flag.gif" ImageAlign="Bottom"
-                                    Width="42px" Height="30px" />
-                            </span><span class="style12"><span class="style8">&nbsp;Fábrica (Leon)</span></span></strong><strong
-                                style="font-size: small"><wijmo1:c1gridview id="C1Fabrica" runat="server" style="top: 0px;
-                                    left: 3px; font-size: small;" autogeneratecolumns="False" height="180px" width="340px"
-                                    scrollmode="Vertical">
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <table width="300px;" height="248;" border="0px" class="rounded_corners">
+                            <tr>
+                                <th style="background-color: #4b6c9e; height: 30px; color: White;">
+                                    Fábrica (Leon)
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <wijmo1:c1gridview id="C1Fabrica" runat="server" style="top: 0px; left: 3px; font-size: small;"
+                                        autogeneratecolumns="False" height="180px" width="340px" scrollmode="Vertical">
                         <Columns>
                             <wijmo1:C1BoundField DataField="CAMU" Width="80px" HeaderText="Embala">
                             </wijmo1:C1BoundField>
@@ -149,36 +213,9 @@
                             </wijmo1:C1BoundField>
                         </Columns>
                     </wijmo1:c1gridview>
-                            </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style10" style="border-style: none; border-color: #FFFFFF;">
-                        <span class="style7">Produto<br />
-                            Nome<br />
-                            Total em Portugal (n/Resv)<br />
-                            Total na Fábrica<br />
-                            Total Combinado</span>&nbsp;
-                    </td>
-                    <td class="style11" style="border-style: none; border-color: #FFFFFF;">
-                        <strong>
-                            <asp:TextBox ID="sSelectedProduct" runat="server" Width="111px"></asp:TextBox>
-                            <br />
-                            <asp:TextBox ID="sSelectedName" runat="server" Width="227px"></asp:TextBox>
-                            <br />
-                            <asp:TextBox ID="TextBox2" runat="server" Width="65px"></asp:TextBox>
-                            <br />
-                            <asp:TextBox ID="TextBox3" runat="server" Width="65px"></asp:TextBox>
-                            <br />
-                            <asp:TextBox ID="TextBox4" runat="server" Width="65px"></asp:TextBox>
-                        </strong>
-                    </td>
-                    <td class="style2" style="border-style: none; border-color: #FFFFFF;">
-                        <br />
-                        <br />
-                        <asp:Button ID="btnStocks" runat="server" Height="32px" Text="Stocks" Width="84px"
-                            Style="text-align: center" />
-                        <br />
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>
